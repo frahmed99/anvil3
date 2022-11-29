@@ -72,7 +72,7 @@
                                             {{ __('Create Account') }}
                                         </a>
                                         <a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block"
-                                            href="{{ route('password.request') }}">
+                                            href="{{ route('forget.password.get') }}">
                                             {{ __('Forgot Password?') }}
                                         </a>
                                     </div>

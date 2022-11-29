@@ -13,13 +13,16 @@
         @include('backend.includes.header')
         <main id="main-container">
             <!-- Page Content -->
-            <div class="content content-full text-center">
+            <div class="content content-full">
                 @yield('content')
             </div>
             <!-- END Page Content -->
         </main>
         <!-- END Main Container -->
+        @include('backend.includes.footer')
     </div>
     <!-- END Page Container -->
+    @yield('js_after')
 </body>
+
 </html>

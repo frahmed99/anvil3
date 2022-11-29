@@ -21,9 +21,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
 
 <!-- Modules -->
-@yield('css')
+  @yield('css')
 @vite(['resources/sass/main.scss', 'resources/js/codebase/app.js'])
+  @yield('js')
 
 <!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
 {{-- @vite(['resources/sass/main.scss', 'resources/sass/codebase/themes/corporate.scss', 'resources/js/codebase/app.js']) --}}
-@yield('js')

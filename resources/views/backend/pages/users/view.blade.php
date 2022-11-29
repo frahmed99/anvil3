@@ -19,24 +19,17 @@
                 <!-- Row #3 -->
                 @foreach ($allData as $key => $user)
                     <div class="col-md-6 col-xl-3">
-                        <div class="block block-rounded text-center">
-                            <div class="block-content block-content-full block-content-sm">
-                                <div class="fw-semibold">{{ $user->name }}</div>
-                            </div>
-                            <div class="block-content block-content-full bg-body-light">
-                                <img class="img-avatar img-avatar-thumb" src="/media/avatars/avatar10.jpg" alt="">
+                        <a class="block block-rounded block-link-pop text-center" href="javascript:void(0)">
+                            <div class="block-content block-content-full bg-image"
+                                style="background-image: url('/media/photos/photo30.jpg');">
+                                <img class="img-avatar img-avatar-thumb" src="/media/avatars/avatar2.jpg"
+                                    alt="">
                             </div>
                             <div class="block-content block-content-full">
-                                <button type="button" class="btn btn-sm btn-alt-primary me-1" data-bs-toggle="tooltip"
-                                    title="Edit">
-                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-alt-primary me-1" data-bs-toggle="tooltip"
-                                    title="Profile">
-                                    <i class="fa fa-fw fa-user"></i>
-                                </button>
+                                <div class="fw-semibold mb-1">{{ $user->name }}</div>
+                                <div class="fs-sm text-muted">Role</div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
                 <!-- END Row #3 -->

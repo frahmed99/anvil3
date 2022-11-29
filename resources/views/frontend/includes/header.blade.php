@@ -19,7 +19,7 @@
                 <li class="nav-main-item">
                     <a class="nav-main-link active" href="{{ route('home') }}">
                         <i class="nav-main-link-icon fa fa-home"></i>
-                        <span class="nav-main-link-name">Home</span>
+                        <span class="nav-main-link-name">{{ __('Home') }}</span>
                     </a>
                 </li>
                 <li class="nav-main-item">

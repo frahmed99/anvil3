@@ -11,15 +11,6 @@
                         <i class="fa fa-fw fa-bars"></i>
                     </button>
                     <!-- END Toggle Sidebar -->
-
-                    <!-- Open Search Section -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="layout"
-                        data-action="header_search_on">
-                        <i class="fa fa-fw fa-search"></i>
-                    </button>
-                    <!-- END Open Search Section -->
-
                     <!-- Color Themes -->
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn btn-sm btn-alt-secondary"
@@ -72,21 +63,6 @@
                                         <a class="text-earth" data-toggle="theme"
                                             data-theme="assets/css/themes/earth.min.css" href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-3 bg-body-light rounded-bottom">
-                                <div class="row g-sm text-center">
-                                    <div class="col-6">
-                                        <a class="dropdown-item fs-sm fw-medium mb-0" href="be_layout_api.html">
-                                            <i class="fa fa-flask opacity-50 me-1"></i> Layout API
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a class="dropdown-item fs-sm fw-medium mb-0"
-                                            href="be_ui_color_themes.html">
-                                            <i class="fa fa-paint-brush opacity-50 me-1"></i> Themes
                                         </a>
                                     </div>
                                 </div>

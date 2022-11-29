@@ -86,26 +86,26 @@
                             <li class="nav-main-item">
                                 <a class="nav-main-link" href="{{ route('dashboard') }}">
                                     <i class="nav-main-link-icon fa fa-house-user"></i>
-                                    <span class="nav-main-link-name">Dashboard</span>
+                                    <span class="nav-main-link-name">{{ __('Dashboard') }}</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
                                     aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-grip-vertical"></i>
-                                    <span class="nav-main-link-name">Staff</span>
+                                    <span class="nav-main-link-name">{{ __('Staff') }}</span>
                                 </a>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
                                         <a class="nav-main-link" href="{{ route('user.index') }}">
-                                            <span class="nav-main-link-name">User</span>
+                                            <span class="nav-main-link-name">{{ __('Users') }}</span>
                                         </a>
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
-                                        <a class="nav-main-link" href="be_blocks_styles.html">
-                                            <span class="nav-main-link-name">Roles</span>
+                                        <a class="nav-main-link" href="{{ route('role.index') }}">
+                                            <span class="nav-main-link-name">{{ __('Roles') }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -113,13 +113,13 @@
                             <li class="nav-main-item">
                                 <a class="nav-main-link" href="be_blocks_styles.html">
                                     <i class="nav-main-link-icon fa fa-house-user"></i>
-                                    <span class="nav-main-link-name">Product & Services</span>
+                                    <span class="nav-main-link-name">{{ __('Product & Services') }}</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link" href="be_blocks_styles.html">
                                     <i class="nav-main-link-icon fa fa-house-user"></i>
-                                    <span class="nav-main-link-name">Product Stock</span>
+                                    <span class="nav-main-link-name">{{ __('Product Stock') }}</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
