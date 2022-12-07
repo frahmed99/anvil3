@@ -1,15 +1,3 @@
-        <!-- Sidebar -->
-        <!--
-        Helper classes
-
-        Adding .smini-hide to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
-        Adding .smini-show to an element will make it visible (opacity: 1) when the sidebar is in mini mode
-          If you would like to disable the transition, just add the .no-transition along with one of the previous 2 classes
-
-        Adding .smini-hidden to an element will hide it when the sidebar is in mini mode
-        Adding .smini-visible to an element will show it only when the sidebar is in mini mode
-        Adding 'smini-visible-block' to an element will show it (display: block) only when the sidebar is in mini mode
-      -->
         <nav id="sidebar">
             <!-- Sidebar Content -->
             <div class="sidebar-content">
@@ -64,7 +52,7 @@
                                 <li class="list-inline-item">
                                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                                     <a class="link-fx text-dual" data-toggle="layout" data-action="dark_mode_toggle"
-                                        href="javascript:void(0)">
+                                        tooltip="Dark Mode">
                                         <i class="fa fa-burn"></i>
                                     </a>
                                 </li>
@@ -109,6 +97,13 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <ul class="nav-main-submenu">
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link" href="{{ route('permission.index') }}">
+                                            <span class="nav-main-link-name">{{ __('Permissions') }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link" href="be_blocks_styles.html">
@@ -123,34 +118,34 @@
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
+                                <a class="nav-main-link" href="{{ route('customer.index') }}">
                                     <i class="nav-main-link-icon fa fa-house-user"></i>
-                                    <span class="nav-main-link-name">Customer</span>
+                                    <span class="nav-main-link-name">{{ __('Customers') }}</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link" href="be_blocks_styles.html">
                                     <i class="nav-main-link-icon fa fa-house-user"></i>
-                                    <span class="nav-main-link-name">Vendor</span>
+                                    <span class="nav-main-link-name">{{ __('Vendors') }}</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
                                     aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-grip-vertical"></i>
-                                    <span class="nav-main-link-name">Banking</span>
+                                    <span class="nav-main-link-name">{{ __('Banking') }}</span>
                                 </a>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
                                         <a class="nav-main-link" href="be_blocks_styles.html">
-                                            <span class="nav-main-link-name">Accounts</span>
+                                            <span class="nav-main-link-name">{{ __('Accounts') }}</span>
                                         </a>
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
                                         <a class="nav-main-link" href="be_blocks_styles.html">
-                                            <span class="nav-main-link-name">Transfer</span>
+                                            <span class="nav-main-link-name">{{ __('Transfer') }}</span>
                                         </a>
                                     </li>
                                 </ul>

@@ -1,11 +1,14 @@
 <?php
 
 use Auth\LoginController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\RolesController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\PermissionController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
@@ -47,15 +50,14 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 //Backend routes
-Auth::routes();
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware([
-    'auth:santum',
+    'auth',
     'prevent-back-history',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.pages.dashboard.dashboard');
@@ -66,11 +68,18 @@ Route::middleware([
         Route::get('/create', [UserController::class, 'create'])->name('user.create');
         Route::post('/store', [UserController::class, 'store'])->name('user.store');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-        Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::post('/update/{id}', [UserController::class, 'updateUsers'])->name('user.update');
         Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
     //Profile Management
-
+    Route::prefix('profile')->group(function () {
+        Route::get('/index', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
+        Route::post('/store', [ProfileController::class, 'store'])->name('profile.store');
+        Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::post('/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/destroy/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
     //Roles Management
     Route::prefix('role')->group(function () {
         Route::get('/index', [RolesController::class, 'index'])->name('role.index');
@@ -79,5 +88,35 @@ Route::middleware([
         Route::get('/edit/{id}', [RolesController::class, 'edit'])->name('role.edit');
         Route::post('/update/{id}', [RolesController::class, 'update'])->name('role.update');
         Route::get('/destroy/{id}', [RolesController::class, 'destroy'])->name('role.destroy');
+    });
+
+    //Permission Management
+    Route::prefix('permission')->group(function () {
+        Route::get('/index', [PermissionController::class, 'index'])->name('permission.index');
+        Route::get('/create', [PermissionController::class, 'create'])->name('permission.create');
+        Route::post('/store', [PermissionController::class, 'store'])->name('permission.store');
+        Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
+        Route::post('/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
+        Route::get('/destroy/{id}', [PermissionController::class, 'destroy'])->name('permission.destroy');
+    });
+
+    //Customer Management
+    Route::prefix('customer')->group(function () {
+        Route::get('/index', [CustomerController::class, 'index'])->name('customer.index');
+        Route::get('/create', [CustomerController::class, 'create'])->name('customer.create');
+        Route::post('/store', [CustomerController::class, 'store'])->name('customer.store');
+        Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+        Route::post('/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+        Route::get('/destroy/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
+    });
+
+    //Vendor Management
+    Route::prefix('vendor')->group(function () {
+        Route::get('/index', [VendorController::class, 'index'])->name('vendor.index');
+        Route::get('/create', [VendorController::class, 'create'])->name('vendor.create');
+        Route::post('/store', [VendorController::class, 'store'])->name('vendor.store');
+        Route::get('/edit/{id}', [VendorController::class, 'edit'])->name('vendor.edit');
+        Route::post('/update/{id}', [VendorController::class, 'update'])->name('vendor.update');
+        Route::get('/destroy/{id}', [VendorController::class, 'destroy'])->name('vendor.destroy');
     });
 });

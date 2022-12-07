@@ -13,13 +13,12 @@
                     <!-- END Toggle Sidebar -->
                     <!-- Color Themes -->
                     <div class="dropdown d-inline-block">
-                        <button type="button" class="btn btn-sm btn-alt-secondary"
-                            id="page-header-themes-dropdown" data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-themes-dropdown"
+                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="fa fa-fw fa-wrench"></i>
                         </button>
-                        <div class="dropdown-menu dropdown-menu-lg p-0"
-                            aria-labelledby="page-header-themes-dropdown">
+                        <div class="dropdown-menu dropdown-menu-lg p-0" aria-labelledby="page-header-themes-dropdown">
                             <div class="p-3 bg-body-light rounded-top">
                                 <h5 class="h6 text-center mb-0">
                                     Color Themes
@@ -35,33 +34,36 @@
                                     </div>
                                     <div class="col-2">
                                         <a class="text-elegance" data-toggle="theme"
-                                            data-theme="assets/css/themes/elegance.min.css"
+                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/elegance.scss') }}"
                                             href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
                                         </a>
                                     </div>
                                     <div class="col-2">
                                         <a class="text-pulse" data-toggle="theme"
-                                            data-theme="assets/css/themes/pulse.min.css" href="javascript:void(0)">
+                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/pulse.scss') }}"
+                                            href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
                                         </a>
                                     </div>
                                     <div class="col-2">
                                         <a class="text-flat" data-toggle="theme"
-                                            data-theme="assets/css/themes/flat.min.css" href="javascript:void(0)">
+                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/flat.scss') }}"
+                                            href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
                                         </a>
                                     </div>
                                     <div class="col-2">
                                         <a class="text-corporate" data-toggle="theme"
-                                            data-theme="assets/css/themes/corporate.min.css"
+                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/corporate.scss') }}"
                                             href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
                                         </a>
                                     </div>
                                     <div class="col-2">
                                         <a class="text-earth" data-toggle="theme"
-                                            data-theme="assets/css/themes/earth.min.css" href="javascript:void(0)">
+                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/earth.scss') }}"
+                                            href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
                                         </a>
                                     </div>
@@ -106,8 +108,7 @@
                                 <!-- Toggle Side Overlay -->
                                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                                 <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
-                                    href="javascript:void(0)" data-toggle="layout"
-                                    data-action="side_overlay_toggle">
+                                    href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
                                     <span>Settings</span>
                                     <i class="fa fa-fw fa-wrench opacity-25"></i>
                                 </a>

@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Anvil Accounting Software </title>
+<title>Anvil Accounting</title>
 
 <meta name="description" content="Anvil Accounting Software created by Reach IT Zambia">
 <meta name="author" content="reachitzm">
@@ -21,9 +21,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
 
 <!-- Modules -->
-  @yield('css')
-@vite(['resources/sass/main.scss', 'resources/js/codebase/app.js'])
-  @yield('js')
+@yield('css')
+@vite(['resources/sass/main.scss', 'resources/js/codebase/app.js', 'resources/sass/codebase/themes/elegance.scss'])
+<script src="{{ asset('js/lib/jquery.min.js') }}"></script>
+<!--Toastr---->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-<!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
-{{-- @vite(['resources/sass/main.scss', 'resources/sass/codebase/themes/corporate.scss', 'resources/js/codebase/app.js']) --}}
+@yield('js')

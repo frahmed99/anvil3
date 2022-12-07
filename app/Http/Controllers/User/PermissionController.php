@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 
-class UserController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['allData'] = User::all();
-        return view('backend.pages.users.view', $data);
+        $permissions = Permission::all();
+        return view('backend.pages.permissions.index', compact('permissions'));
     }
 
     /**
@@ -29,7 +27,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.users.create');
     }
 
     /**
@@ -40,6 +37,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'name' => 'required|string|max:255|unique:permissions,name',
+            ],
+            [
+                'name.required' => 'The Permission Name Is Required',
+                'name.unique' => 'Permission Already Exists',
+            ]
+        );
+
+        $data = new Permission();
+        $data->name = $request->name;
+        $data->save();
+
+        return redirect()->route('permission.index');
     }
 
     /**
@@ -73,6 +85,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**
@@ -83,9 +96,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
+        $tax = Permission::find($id);
+        $tax->delete();
 
-        return redirect()->route('user.index');
+        return redirect()->route('permission.index');
     }
 }

@@ -15,6 +15,9 @@
             <!-- Page Content -->
             <div class="content content-full">
                 @yield('content')
+                @isset($slot)
+                    {{ $slot }}
+                @endisset
             </div>
             <!-- END Page Content -->
         </main>
@@ -22,7 +25,37 @@
         @include('backend.includes.footer')
     </div>
     <!-- END Page Container -->
-    @yield('js_after')
+    @yield('scripts')
+    <script>
+        @if (Session::has('message'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.success("{{ session('message') }}");
+        @endif
+        @if (Session::has('error'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.error("{{ session('error') }}");
+        @endif
+        @if (Session::has('info'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.info("{{ session('info') }}");
+        @endif
+        @if (Session::has('warning'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
 </body>
 
 </html>
