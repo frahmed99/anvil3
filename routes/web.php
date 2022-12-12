@@ -51,7 +51,6 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 
 //Backend routes
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware([
     'auth',
@@ -62,23 +61,22 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('backend.pages.dashboard.dashboard');
     })->name('dashboard');
+
+    //Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
     //User Management
     Route::prefix('user')->group(function () {
         Route::get('/index', [UserController::class, 'index'])->name('user.index');
         Route::get('/create', [UserController::class, 'create'])->name('user.create');
         Route::post('/store', [UserController::class, 'store'])->name('user.store');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-        Route::post('/update/{id}', [UserController::class, 'updateUsers'])->name('user.update');
+        Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
         Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
     //Profile Management
     Route::prefix('profile')->group(function () {
-        Route::get('/index', [ProfileController::class, 'index'])->name('profile.index');
-        Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
-        Route::post('/store', [ProfileController::class, 'store'])->name('profile.store');
-        Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::post('/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
-        Route::get('/destroy/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
     });
     //Roles Management
     Route::prefix('role')->group(function () {

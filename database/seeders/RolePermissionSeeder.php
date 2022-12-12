@@ -17,15 +17,15 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
         // Create Roles
-        $roleSuperAdmin = Role::create(['name' => 'superadmin']);
-        $roleAdmin = Role::create(['name' => 'admin']);
-        $roleEditor = Role::create(['name' => 'editor']);
-        $roleUser = Role::create(['name' => 'user']);
-
-
+        $roleSuperAdmin = Role::create(['name' => 'Super Admin']);
+        $roleAdmin = Role::create(['name' => 'Administrator']);
+        $roleAccountant = Role::create(['name' => 'Accountant']);
+        $roleApprover = Role::create(['name' => 'Approver']);
+        $roleAuditor = Role::create(['name' => 'Auditor']);
+        $roleClerk = Role::create(['name' => 'Clerk']);
+        $rolePayer = Role::create(['name' => 'Payer']);
         // Permission List as array
         $permissions = [
-
             [
                 'group_name' => 'Dashboard',
                 'permissions' => [
@@ -362,17 +362,6 @@ class RolePermissionSeeder extends Seeder
                     'Edit.Journal Entry',
                     'Delete.Journal Entry',
                     'Show.Journal Entry',
-                ]
-            ],
-            [
-                'group_name' => 'Chart Of Accounts',
-                'permissions' => [
-                    // Chart Of Accounts Permissions
-                    'Manage.Chart Of Accounts',
-                    'Create.Chart Of Accounts',
-                    'Edit.Chart Of Accounts',
-                    'Delete.Chart Of Accounts',
-                    'Show.Chart Of Accounts',
                 ]
             ],
             [

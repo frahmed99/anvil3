@@ -36,13 +36,17 @@
                     <div class="content-side content-side-user px-0 py-0">
                         <!-- Visible only in mini mode -->
                         <div class="smini-visible-block animated fadeIn px-3">
-                            <img class="img-avatar img-avatar32" src="/media/avatars/avatar15.jpg" alt="">
+                            <img class="img-avatar img-avatar32"
+                                src="{{ !empty(Auth::user()->profile_photo_path) ? url('media/upload/user_images/' . Auth::user()->profile_photo_path) : url('media/avatars/avatar0.jpg') }}"
+                                alt="">
                         </div>
                         <!-- END Visible only in mini mode -->
                         <!-- Visible only in normal mode -->
                         <div class="smini-hidden text-center mx-auto">
-                            <a class="img-link" href="be_pages_generic_profile.html">
-                                <img class="img-avatar" src="/media/avatars/avatar15.jpg" alt="">
+                            <a class="img-link" href="{{ route('profile.edit') }}">
+                                <img class="img-avatar"
+                                    src="{{ !empty(Auth::user()->profile_photo_path) ? url('media/upload/user_images/' . Auth::user()->profile_photo_path) : url('media/avatars/avatar0.jpg') }}"
+                                    alt="">
                             </a>
                             <ul class="list-inline mt-3 mb-0">
                                 <li class="list-inline-item">
@@ -85,14 +89,16 @@
                                 </a>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
-                                        <a class="nav-main-link" href="{{ route('user.index') }}">
+                                        <a class="nav-main-link{{ request()->is('user/') ? ' active' : '' }}"
+                                            href="{{ route('user.index') }}">
                                             <span class="nav-main-link-name">{{ __('Users') }}</span>
                                         </a>
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
-                                        <a class="nav-main-link" href="{{ route('role.index') }}">
+                                        <a class="nav-main-link{{ request()->is('role/') ? ' active' : '' }}"
+                                            href="{{ route('role.index') }}">
                                             <span class="nav-main-link-name">{{ __('Roles') }}</span>
                                         </a>
                                     </li>

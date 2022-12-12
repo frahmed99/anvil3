@@ -42,34 +42,55 @@
             </div>
         </div>
     </div>
-    <div class="block-content block-content-full">
-        <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-        <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
-            <thead>
-                <tr>
-                    <th>{{ __('Customers') }}</th>
-                    <th class="text-center" style="width: 15%;">{{ __('Action') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($customers as $customer)
+    <div class="block block-rounded">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">
+                Manage <small>Customers</small>
+            </h3>
+        </div>
+        <div class="block-content block-content-full">
+            <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+            <table class="table table-bordered table-vcenter js-dataTable-responsive dataTable no-footer dtr-inline">
+                <thead>
                     <tr>
-                        <td class="fw-semibold">{{ $customer->name }}</td>
+                        <th>Customer ID</th>
+                        <th>Name</th>
+                        <th class="d-none d-sm-table-cell">Phone</th>
+                        <th class="d-none d-sm-table-cell">Email</th>
+                        <th class="d-none d-sm-table-cell" style="width: 15%;">Balance</th>
+                        <th class="d-none d-sm-table-cell" style="width: 15%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- @foreach ($allData as $key => $customer) --}}
+                    <tr>
+                        <td class="fw-semibold"><a href="">Cust-101010101</td>
+                        <td class="fw-semibold">Joseph Thomas</td>
+                        <td class="d-none d-sm-table-cell">+26096123562</td>
+                        <td class="d-none d-sm-table-cell">frahmed99@gmail.com</td>
+                        <td class="d-none d-sm-table-cell text-center">
+                            <span class="badge bg-danger">Disabled</span>
+                        </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-sm btn-alt-primary me-1" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" title="Edit Customer">
-                                <i class="fa fa-fw fa-pen"></i>
-                            </button>
-                            <a href="{{ route('customer.destroy', $customer->id) }}" type="button"
-                                class="btn btn-sm btn-alt-danger me-1" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                title="Delete Customer">
-                                <i class="fa fa-fw fa-xmark"></i>
-                            </a>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled show"
+                                    href="" data-bs-placement="bottom"><i class="fa fa-fw fa-eye"></i></a>
+                                <a type="button" id="edit"
+                                    class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" title="Edit Customer" href="">
+                                    <i class="fa fa-fw fa-edit"></i>
+                                </a>
+                                <a type="button" id="delete"
+                                    class="btn btn-sm btn-alt-danger me-1 js-bs-tooltip-enabled" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" title="Edit Customer" href="">
+                                    <i class="fa fa-fw fa-xmark"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    {{-- @endforeach --}}
+                </tbody>
+            </table>
+        </div>
     </div>
-
 @stop

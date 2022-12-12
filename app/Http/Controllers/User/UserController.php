@@ -4,9 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -18,8 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['allData'] = User::all();
-        return view('backend.pages.users.view', $data);
+        $users = User::all();
+        return view('backend.pages.users.index', compact('users'));
     }
 
     /**
@@ -29,7 +29,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.users.create');
+        $roles  = Role::all();
+        return view('backend.pages.users.create', compact('roles'));
     }
 
     /**
@@ -40,6 +41,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation Data
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|max:100|email|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        // Create New User
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
+        smilify('success', 'User Created Successfully');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -61,7 +82,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles  = Role::all();
+        return view('backend.pages.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -73,6 +96,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|max:100|email|unique:users,email,' . $id,
+            'password' => 'nullable|min:6|confirmed',
+        ]);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        $user->roles()->detach();
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+        smilify('success', 'User Updated Successfully');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -85,7 +126,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-
         return redirect()->route('user.index');
     }
 }

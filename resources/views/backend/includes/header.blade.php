@@ -89,18 +89,18 @@
                             aria-labelledby="page-header-user-dropdown">
                             <div class="p-2">
                                 <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
-                                    href="be_pages_generic_profile.html">
+                                    href="{{ route('profile.edit') }}">
                                     <span>Profile</span>
                                     <i class="fa fa-fw fa-user opacity-25"></i>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center justify-content-between"
                                     href="be_pages_generic_inbox.html">
-                                    <span>Inbox</span>
+                                    <span>New Quotation</span>
                                     <i class="fa fa-fw fa-envelope-open opacity-25"></i>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
                                     href="be_pages_generic_invoice.html">
-                                    <span>Invoices</span>
+                                    <span>New Invoice</span>
                                     <i class="fa fa-fw fa-file opacity-25"></i>
                                 </a>
                                 <div class="dropdown-divider"></div>

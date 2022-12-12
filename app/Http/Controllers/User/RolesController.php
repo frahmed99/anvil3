@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Permissions;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,8 @@ class RolesController extends Controller
     public function create()
     {
         $permissions = Permission::all();
-        return view('backend.pages.roles.create', compact('permissions'));
+        $permission_groups = Permissions::getpermissionGroups();
+        return view('backend.pages.roles.create', compact('permissions', 'permission_groups'));
     }
 
     public function store(Request $request)
@@ -36,7 +38,8 @@ class RolesController extends Controller
         if (!empty($permissions)) {
             $role->syncPermissions($permissions);
         }
-        return back();
+        smilify('success', 'Role Added Successfully');
+        return redirect()->route('role.index');
     }
 
     public function show($id)
@@ -46,19 +49,43 @@ class RolesController extends Controller
 
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        $permission_groups = Permissions::getpermissionGroups();
+        return view('backend.pages.roles.edit', compact('role', 'permissions', 'permission_groups'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:100|unique:roles,name,' . $id
+        ], [
+            'name.requried' => 'Please give a role name'
+        ]);
+        $role = Role::findById($id);
+        $permissions = $request->input('permissions');
+        if (!empty($permissions)) {
+            $role->name = $request->name;
+            $role->save();
+            $role->syncPermissions($permissions);
+        }
+        smilify('success', 'Role Updated Successfully');
+
+        return redirect()->route('role.index');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        $tax = Role::find($id);
-        $tax->delete();
+        $role = Role::find($id);
+        $role->delete();
 
+        smilify('success', 'Role Deleted!!');
         return redirect()->route('role.index');
     }
 }

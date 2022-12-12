@@ -1,17 +1,6 @@
 @extends('backend.layouts.default')
-
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $("#checkall").click(function() {
-                $('input:checkbox').not(this).prop('checked', this.checked);
-            });
-            $(".ischeck").click(function() {
-                var ischeck = $(this).data('id');
-                $('.isscheck_' + ischeck).prop('checked', this.checked);
-            });
-        });
-    </script>
+    @include('backend.pages.roles.partials.scripts')
 @stop
 
 @section('content')
@@ -30,37 +19,80 @@
             </div>
         </div>
     </div>
-    <div class="block-content block-content-full">
-        <div class="block block-rounded">
-            <div class="row g-sm items-push">
-                @include('backend.includes.messages')
-                <form action="{{ route('role.store') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <input type="text" class="form-control " id="name" name="name" placeholder="Role Name">
-                    </div>
+    <div class="block block-rounded">
+        <div class="block-content block-content-full">
+            <form action="{{ route('role.store') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Role Name</label>
+                    <input type="text" class="form-control" id="name" name="name"
+                        placeholder="Enter a Role Name">
+                </div>
+                <div class="block block-rounded">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Permissions</h3>
-                    </div>
-                    <div class="form-group">
-                        <div class="space-y-2">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkall" value="1">
-                                <label class="form-check-label" for="checkall">All</label>
-                            </div>
-                            @foreach ($permissions as $permission)
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="permissions[]"
-                                        id="checkPermission{{ $permission->id }}" value="{{ $permission->name }}">
-                                    <label class="form-check-label"
-                                        for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
-                                </div>
-                            @endforeach
+                        <div class="block-options">
                         </div>
-                        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save Role</button>
                     </div>
-                </form>
-            </div>
+                    <table class="table table-bordered table-vcenter">
+                        <thead>
+                            <tr>
+                                <th style="width: 250px;"> <input type="checkbox" class="form-check-input" id="checkall"
+                                        value="1">
+                                    <label class="form-check-label" for="checkall">All</label>
+                                </th>
+                                <th>Permissions</th>
+                            </tr>
+                        </thead>
+                        @php $i = 1; @endphp
+                        @foreach ($permission_groups as $group)
+                            <tbody>
+                                <tr>
+                                    <th class="text-center" scope="">
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" class="form-check-input"
+                                                id="{{ $i }}Management" value="{{ $group->name }}"
+                                                onclick="checkPermissionByGroup('role-{{ $i }}-management-checkbox', this)">
+                                            <label class="form-check-label"
+                                                for="checkPermission">{{ $group->name }}</label>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="row">
+                                            <div class="role-{{ $i }}-management-checkbox">
+                                                @php
+                                                    $permissions = App\Models\Permissions::getpermissionsByGroupName($group->name);
+                                                    $j = 1;
+                                                @endphp
+                                                @foreach ($permissions as $permission)
+                                                    <div class="col-lg-8 col-xl-4">
+                                                        <div class="form-check form-switch">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="permissions[]"
+                                                                id="checkPermission{{ $permission->id }}"
+                                                                value="{{ $permission->name }}">
+                                                            <label class="form-check-label"
+                                                                for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
+                                                            @php  $j++; @endphp
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            @php  $i++; @endphp
+                        @endforeach
+                    </table>
+
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save Role</button>
+            </form>
+
+            <!-- data table end -->
+
         </div>
     </div>
+
 @stop
