@@ -1,14 +1,9 @@
 <script>
-    $("#checkPermissionAll").click(function() {
-        if ($(this).is(':checked')) {
-            // check all the checkbox
-            $('input[type=checkbox]').prop('checked', true);
-        } else {
-            // un check all the checkbox
-            $('input[type=checkbox]').prop('checked', false);
-        }
+    $(document).ready(function() {
+        $("#checkPermissionAll").click(function() {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
     });
-
 
     function checkPermissionByGroup(className, checkThis) {
         const groupIdName = $("#" + checkThis.id);

@@ -42,16 +42,19 @@
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="{{ route('role.edit', $role->id) }}" type="button"
-                                            class="btn btn-sm btn-secondary js-bs-tooltip-enabled btn-info"
-                                            data-bs-toggle="tooltip" aria-label="Edit">
+                                            class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled"
+                                            data-bs-toggle="tooltip" aria-label="Edit Role">
                                             <i class="fa fa-pencil-alt"></i>
                                         </a>
-                                        <a href="{{ route('role.destroy', $role->id) }}" type="button"
-                                            class="btn btn-sm btn-secondary js-bs-tooltip-enabled btn-danger"
-                                            data-bs-toggle="tooltip" aria-label="Delete">
+                                        <a href="{{ route('role.destroy', $role->id) }}" type="button" id="delete"
+                                            class="btn btn-sm btn-alt-danger me-1 js-bs-tooltip-enabled"
+                                            data-bs-toggle="tooltip" aria-label="Delete Role">
                                             <i class="fa fa-times"></i>
                                         </a>
                                     </div>
+
+
+
                                 </td>
                             </tr>
                         @endforeach
