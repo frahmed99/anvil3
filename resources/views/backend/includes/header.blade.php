@@ -34,14 +34,14 @@
                                     </div>
                                     <div class="col-2">
                                         <a class="text-elegance" data-toggle="theme"
-                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/elegance.scss') }}"
+                                            data-theme="{{ asset('resources/sass/codebase/themes/elegance.scss') }}"
                                             href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
                                         </a>
                                     </div>
                                     <div class="col-2">
                                         <a class="text-pulse" data-toggle="theme"
-                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/pulse.scss') }}"
+                                            data-theme="{{ asset('resources/sass/codebase/themes/pulse.scss') }}"
                                             href="javascript:void(0)">
                                             <i class="fa fa-2x fa-circle"></i>
                                         </a>
@@ -116,7 +116,7 @@
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
-                                    href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                    href="{{ route('admin.logout') }}" @click.prevent="$root.submit();">
                                     <span>Sign Out</span>
                                     <i class="fa fa-fw fa-sign-out-alt opacity-25"></i>
                                 </a>

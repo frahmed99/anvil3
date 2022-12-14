@@ -62,10 +62,10 @@ Route::middleware([
         return view('backend.pages.dashboard.dashboard');
     })->name('dashboard');
 
-    //Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
 
     //User Management
-    Route::prefix('user')->group(function () {
+    Route::prefix('staff/user')->group(function () {
         Route::get('/index', [UserController::class, 'index'])->name('user.index');
         Route::get('/create', [UserController::class, 'create'])->name('user.create');
         Route::post('/store', [UserController::class, 'store'])->name('user.store');
@@ -74,12 +74,12 @@ Route::middleware([
         Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
     //Profile Management
-    Route::prefix('profile')->group(function () {
+    Route::prefix('staff/profile')->group(function () {
         Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
     });
     //Roles Management
-    Route::prefix('role')->group(function () {
+    Route::prefix('staff/role')->group(function () {
         Route::get('/index', [RolesController::class, 'index'])->name('role.index');
         Route::get('/create', [RolesController::class, 'create'])->name('role.create');
         Route::post('/store', [RolesController::class, 'store'])->name('role.store');
@@ -89,7 +89,7 @@ Route::middleware([
     });
 
     //Permission Management
-    Route::prefix('permission')->group(function () {
+    Route::prefix('staff/permission')->group(function () {
         Route::get('/index', [PermissionController::class, 'index'])->name('permission.index');
         Route::get('/create', [PermissionController::class, 'create'])->name('permission.create');
         Route::post('/store', [PermissionController::class, 'store'])->name('permission.store');

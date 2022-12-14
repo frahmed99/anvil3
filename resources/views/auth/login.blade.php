@@ -1,19 +1,14 @@
-<!doctype html>
-<html lang="en">
-
 <head>
     @include('frontend.includes.head')
-
 </head>
 
 <body>
-
     <div id="page-container" class="main-content-boxed">
 
         <!-- Main Container -->
         <main id="main-container">
             <!-- Page Content -->
-            <div class="bg-image" style="background-image: url('media/photos/photo44@2x.jpg');">
+            <div class="bg-image" style="background-image: url('media/photos/Victoria_Falls.jpg');">
                 <div class="row mx-0 bg-black-50">
                     <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                         <div class="p-4">
@@ -48,7 +43,8 @@
                                 <div class="form-floating mb-4">
                                     <input type="text" class="form-control" id="email" name="email"
                                         placeholder="Enter your username">
-                                    <label class="form-label" for="email" value="{{ __('Email') }}">{{ __('Email') }}</label>
+                                    <label class="form-label" for="email"
+                                        value="{{ __('Email') }}">{{ __('Email') }}</label>
                                     @if ($errors->has('email'))
                                         <span class="text-danger text-left">{{ $errors->first('email') }}</span>
                                     @endif

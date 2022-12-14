@@ -10,7 +10,7 @@
         <!-- Main Container -->
         <main id="main-container">
             <!-- Page Content -->
-            <div class="bg-image" style="background-image: url('media/photos/photo34@2x.jpg');">
+            <div class="bg-image" style="background-image: url('media/photos/Victoria_Falls.jpg');">
                 <div class="row mx-0 bg-earth-op">
                     <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                         <div class="p-4">
@@ -31,8 +31,7 @@
                             <div class="px-4 py-2 mb-4">
                                 <a class="link-fx fw-bold" href="index.html">
                                     <i class="fa fa-fire"></i>
-                                    <span class="fs-4 text-body-color">anvil</span><span
-                                        class="fs-4">ERP</span>
+                                    <span class="fs-4 text-body-color">anvil</span><span class="fs-4">ERP</span>
                                 </a>
                                 <h1 class="h3 fw-bold mt-4 mb-2">Create New Account</h1>
                                 <h2 class="h5 fw-medium text-muted mb-0">Please add your details</h2>
@@ -50,18 +49,18 @@
                                     <label class="form-label" for="{{ __('name') }}">Name</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        required autofocus placeholder="Enter your email">
+                                    <input type="email" class="form-control" id="email" name="email" required
+                                        autofocus placeholder="Enter your email">
                                     <label class="form-label" for="{{ __('Email') }}">Email</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input type="password" class="form-control" id="password" name="password"
-                                        required autofocus placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="password" name="password" required
+                                        autofocus placeholder="Enter your password">
                                     <label class="form-label" for="{{ __('Password') }}">Password</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input type="password" class="form-control" id="password_confirmation"
-                                        required autofocus name="password_confirmation" placeholder="Confirm Password">
+                                    <input type="password" class="form-control" id="password_confirmation" required
+                                        autofocus name="password_confirmation" placeholder="Confirm Password">
                                     <label class="form-label" for="signup-password-confirm"
                                         value="{{ __('Confirm Password') }}">Confirm Password</label>
                                 </div>
@@ -73,9 +72,19 @@
 
                                                 <div class="ml-2">
                                                     {!! __('I agree to the :terms_of_service and :privacy_policy', [
-    'terms_of_service' => '<a target="_blank" href="' . route('terms.show') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('Terms of Service') . '</a>',
-    'privacy_policy' => '<a target="_blank" href="' . route('policy.show') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('Privacy Policy') . '</a>',
-]) !!}
+                                                        'terms_of_service' =>
+                                                            '<a target="_blank" href="' .
+                                                            route('terms.show') .
+                                                            '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
+                                                            __('Terms of Service') .
+                                                            '</a>',
+                                                        'privacy_policy' =>
+                                                            '<a target="_blank" href="' .
+                                                            route('policy.show') .
+                                                            '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
+                                                            __('Privacy Policy') .
+                                                            '</a>',
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                         </x-jet-label>

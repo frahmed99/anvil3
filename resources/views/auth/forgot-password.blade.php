@@ -10,7 +10,7 @@
         <!-- Main Container -->
         <main id="main-container">
             <!-- Page Content -->
-            <div class="bg-image" style="background-image: url('media/photos/photo34@2x.jpg');">
+            <div class="bg-image" style="background-image: url('media/photos/Victoria_Falls.jpg');">
                 <div class="row mx-0 bg-default-op">
                     <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                         <div class="p-4">
@@ -38,7 +38,8 @@
                             <!-- Reminder Form -->
                             <!-- jQuery Validation functionality is initialized with .js-validation-reminder class in js/pages/op_auth_reminder.min.js which was auto compiled from _js/pages/op_auth_reminder.js -->
                             <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                            <form class="js-validation-reminder px-4" action="{{ route('password.email') }}" method="POST">
+                            <form class="js-validation-reminder px-4" action="{{ route('password.email') }}"
+                                method="POST">
                                 <div class="form-floating mb-4">
                                     <input type="text" class="form-control" id="{{ __('Email') }}"
                                         name="{{ __('Email') }}" placeholder="Enter your email">
