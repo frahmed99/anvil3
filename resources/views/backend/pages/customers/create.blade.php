@@ -1,5 +1,7 @@
 @extends('backend.layouts.default')
-
+@section('title')
+    Add Customer - Anvil Accounts
+@endsection
 @section('js')
     <!-- jQuery (required for DataTables plugin) -->
     <script src="{{ asset('js/lib/jquery.min.js') }}"></script>

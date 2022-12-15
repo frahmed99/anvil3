@@ -8,7 +8,6 @@ use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-
 class UserController extends Controller
 {
     /**
@@ -59,7 +58,7 @@ class UserController extends Controller
             $user->assignRole($request->roles);
         }
 
-        smilify('success', 'User Created Successfully');
+        smilify('success', 'User Updated Successfully');
         return redirect()->route('user.index');
     }
 

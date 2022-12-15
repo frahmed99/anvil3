@@ -1,4 +1,7 @@
 @extends('backend.layouts.default')
+@section('title')
+    Add Role - Anvil Accounts
+@endsection
 @section('js')
     @include('backend.pages.roles.partials.scripts')
 @stop
@@ -43,11 +46,10 @@
                         <table class="table table-bordered table-vcenter">
                             <thead>
                                 <tr>
-                                    <th style="width: 250px;">
+                                    <th>
                                         <div class="form-check form-switch">
-                                            <input type="checkbox" class="form-check-input" id="checkPermissionAll"
-                                                value="1">
-                                            <label class="form-check-label" for="checkPermissionAll">All</label>
+                                            <input type="checkbox" class="form-check-input" id="checkall" value="1">
+                                            <label class="form-check-label" for="checkall">All</label>
                                         </div>
                                     </th>
                                     <th>Permissions</th>
@@ -97,9 +99,6 @@
                     </div>
                     <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save Role</button>
                 </form>
-
-                <!-- data table end -->
-
             </div>
         </div>
     </div>

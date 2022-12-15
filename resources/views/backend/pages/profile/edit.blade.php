@@ -1,5 +1,7 @@
 @extends('backend.layouts.default')
-
+@section('title')
+    Profile - Anvil Accounts
+@endsection
 @section('js')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -110,20 +112,17 @@
                         </div>
                         <div class="col-lg-7 offset-lg-1">
                             <div class="mb-4">
-                                <label class="form-label" for="profile-settings-password">Current Password</label>
-                                <input type="password" class="form-control" id="profile-settings-password"
-                                    name="profile-settings-password">
+                                <label class="form-label" for="oldPassword">Current Password</label>
+                                <input type="password" class="form-control" id="oldPassword" name="oldPassword">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="profile-settings-password-new">New Password</label>
-                                <input type="password" class="form-control" id="profile-settings-password-new"
-                                    name="profile-settings-password-new">
+                                <label class="form-label" for="password">New Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="profile-settings-password-new-confirm">Confirm New
+                                <label class="form-label" for="confirmPassword">Confirm New
                                     Password</label>
-                                <input type="password" class="form-control" id="profile-settings-password-new-confirm"
-                                    name="profile-settings-password-new-confirm">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                             </div>
                             <div class="mb-4">
                                 <button type="submit" class="btn btn-alt-primary">Update</button>

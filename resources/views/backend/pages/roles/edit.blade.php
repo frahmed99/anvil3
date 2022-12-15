@@ -1,4 +1,7 @@
 @extends('backend.layouts.default')
+@section('title')
+    Edit Role - Anvil Accounts
+@endsection
 @section('js')
     @include('backend.pages.roles.partials.scripts')
 @stop
@@ -44,10 +47,10 @@
                             <thead>
                                 <tr>
                                     <th style="width: 250px;">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkPermissionAll"
-                                                name="checkPermissionAll" value="1">
-                                            <label class="form-check-label" for="checkPermissionAll">All</label>
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" class="form-check-input" id="checkall" name="checkall"
+                                                value="1">
+                                            <label class="form-check-label" for="checkall">All</label>
                                         </div>
                                     </th>
                                     <th>Permissions</th>

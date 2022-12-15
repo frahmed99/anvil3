@@ -1,6 +1,7 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $("#checkPermissionAll").click(function() {
+        $("#checkall").click(function() {
             $('input:checkbox').not(this).prop('checked', this.checked);
         });
     });
@@ -13,5 +14,6 @@
         } else {
             classCheckBox.prop('checked', false);
         }
+        implementAllChecked();
     }
 </script>

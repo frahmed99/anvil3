@@ -1,4 +1,7 @@
 @extends('backend.layouts.default')
+@section('title')
+    Users - Anvil Accounts
+@endsection
 @section('js')
     @include('backend.pages.users.partials.scripts')
 @stop

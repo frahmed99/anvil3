@@ -11,67 +11,6 @@
                         <i class="fa fa-fw fa-bars"></i>
                     </button>
                     <!-- END Toggle Sidebar -->
-                    <!-- Color Themes -->
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-themes-dropdown"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true"
-                            aria-expanded="false">
-                            <i class="fa fa-fw fa-wrench"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg p-0" aria-labelledby="page-header-themes-dropdown">
-                            <div class="p-3 bg-body-light rounded-top">
-                                <h5 class="h6 text-center mb-0">
-                                    Color Themes
-                                </h5>
-                            </div>
-                            <div class="p-3">
-                                <div class="row g-0 text-center">
-                                    <div class="col-2">
-                                        <a class="text-default" data-toggle="theme" data-theme="default"
-                                            href="javascript:void(0)">
-                                            <i class="fa fa-2x fa-circle"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-2">
-                                        <a class="text-elegance" data-toggle="theme"
-                                            data-theme="{{ asset('resources/sass/codebase/themes/elegance.scss') }}"
-                                            href="javascript:void(0)">
-                                            <i class="fa fa-2x fa-circle"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-2">
-                                        <a class="text-pulse" data-toggle="theme"
-                                            data-theme="{{ asset('resources/sass/codebase/themes/pulse.scss') }}"
-                                            href="javascript:void(0)">
-                                            <i class="fa fa-2x fa-circle"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-2">
-                                        <a class="text-flat" data-toggle="theme"
-                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/flat.scss') }}"
-                                            href="javascript:void(0)">
-                                            <i class="fa fa-2x fa-circle"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-2">
-                                        <a class="text-corporate" data-toggle="theme"
-                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/corporate.scss') }}"
-                                            href="javascript:void(0)">
-                                            <i class="fa fa-2x fa-circle"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-2">
-                                        <a class="text-earth" data-toggle="theme"
-                                            data-theme="{{ Vite::asset('resources/sass/codebase/themes/earth.scss') }}"
-                                            href="javascript:void(0)">
-                                            <i class="fa fa-2x fa-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END Color Themes -->
                 </div>
                 <!-- END Left Section -->
 

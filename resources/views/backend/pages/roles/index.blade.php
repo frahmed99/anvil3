@@ -1,4 +1,7 @@
 @extends('backend.layouts.default')
+@section('title')
+    Roles - Anvil Accounts
+@endsection
 @section('js')
     @include('backend.pages.roles.partials.scripts')
 @stop

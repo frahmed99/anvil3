@@ -8,7 +8,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\PermissionController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
@@ -86,16 +85,6 @@ Route::middleware([
         Route::get('/edit/{id}', [RolesController::class, 'edit'])->name('role.edit');
         Route::post('/update/{id}', [RolesController::class, 'update'])->name('role.update');
         Route::get('/destroy/{id}', [RolesController::class, 'destroy'])->name('role.destroy');
-    });
-
-    //Permission Management
-    Route::prefix('staff/permission')->group(function () {
-        Route::get('/index', [PermissionController::class, 'index'])->name('permission.index');
-        Route::get('/create', [PermissionController::class, 'create'])->name('permission.create');
-        Route::post('/store', [PermissionController::class, 'store'])->name('permission.store');
-        Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
-        Route::post('/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
-        Route::get('/destroy/{id}', [PermissionController::class, 'destroy'])->name('permission.destroy');
     });
 
     //Customer Management

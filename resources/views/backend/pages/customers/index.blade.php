@@ -1,5 +1,7 @@
 @extends('backend.layouts.default')
-
+@section('title')
+    Customers - Anvil Accounts
+@endsection
 @section('css')
     <!-- Page JS Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">

@@ -1,6 +1,5 @@
 <x:notify-messages />
 @notifyJs
-<script src="{{ asset('js/lib/jquery.min.js') }}"></script>
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 <script type="text/javascript">
     $(function() {
@@ -10,7 +9,9 @@
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                imageUrl: '/media/gifs/trashCan.gif',
+                color: '#F0F2F5',
+                imageUrl: '/media/gifs/trash3.gif',
+                background: '#232323',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#primary',
