@@ -46,7 +46,7 @@
                         <table class="table table-bordered table-vcenter">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th style="width: 250px">
                                         <div class="form-check form-switch">
                                             <input type="checkbox" class="form-check-input" id="checkall" value="1">
                                             <label class="form-check-label" for="checkall">All</label>
@@ -69,27 +69,27 @@
                                             </div>
                                         </th>
                                         <td>
-                                            <div class="row">
-                                                <div class="role-{{ $i }}-management-checkbox">
-                                                    @php
-                                                        $permissions = App\Models\Permissions::getpermissionsByGroupName($group->name);
-                                                        $j = 1;
-                                                    @endphp
-                                                    @foreach ($permissions as $permission)
-                                                        <div class="col-lg-8 col-xl-4">
-                                                            <div class="form-check form-switch">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                    name="permissions[]"
-                                                                    id="checkPermission{{ $permission->id }}"
-                                                                    value="{{ $permission->name }}">
-                                                                <label class="form-check-label"
-                                                                    for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
-                                                                @php  $j++; @endphp
-                                                            </div>
+                                            <div class="row role-{{ $i }}-management-checkbox">
+                                                @php
+                                                    $permissions = App\Models\Permissions::getpermissionsByGroupName($group->name);
+                                                    $j = 1;
+                                                @endphp
+                                                @foreach ($permissions as $permission)
+                                                    <div class="col-lg-8 col-xl-4">
+                                                        <div class="form-check form-switch">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="permissions[]"
+                                                                id="checkPermission{{ $permission->id }}"
+                                                                value="{{ $permission->name }}">
+                                                            <label class="form-check-label"
+                                                                for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
+                                                            @php  $j++; @endphp
                                                         </div>
-                                                    @endforeach
-                                                </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
+
+
                                         </td>
                                     </tr>
                                 </tbody>
