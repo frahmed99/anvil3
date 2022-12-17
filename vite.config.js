@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
-import laravel, { refreshPaths } from 'laravel-vite-plugin';
+import { defineConfig } from "vite";
+import laravel, { refreshPaths } from "laravel-vite-plugin";
 
 export default defineConfig({
     plugins: [
@@ -16,7 +16,11 @@ export default defineConfig({
                 "resources/js/pages/datatables.js",
                 "resources/js/pages/slick.js",
             ],
-            refresh: [...refreshPaths, "app/Http/Livewire/**"],
+            refresh: [
+                "resources/views/**",
+                ...refreshPaths,
+                "app/Http/Livewire/**",
+            ],
         }),
     ],
 });

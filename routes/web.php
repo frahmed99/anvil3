@@ -7,7 +7,9 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\RolesController;
+use App\Http\Controllers\Settings\TaxController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
@@ -49,8 +51,6 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 //Backend routes
-
-
 Route::middleware([
     'auth',
     'prevent-back-history',
@@ -60,7 +60,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('backend.pages.dashboard.dashboard');
     })->name('dashboard');
-
+    //Auth Routes
     Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
 
     //User Management
@@ -105,5 +105,19 @@ Route::middleware([
         Route::get('/edit/{id}', [VendorController::class, 'edit'])->name('vendor.edit');
         Route::post('/update/{id}', [VendorController::class, 'update'])->name('vendor.update');
         Route::get('/destroy/{id}', [VendorController::class, 'destroy'])->name('vendor.destroy');
+    });
+
+    //Tax Management
+    Route::prefix('tax')->group(function () {
+        Route::get('/index', [TaxController::class, 'index'])->name('tax.index');
+        Route::get('/create', [TaxController::class, 'create'])->name('tax.create');
+        Route::post('/store', [TaxController::class, 'store'])->name('tax.store');
+        Route::get('/edit/{id}', [TaxController::class, 'edit'])->name('tax.edit');
+        Route::post('/update/{id}', [TaxController::class, 'update'])->name('tax.update');
+        Route::get('/destroy/{id}', [TaxController::class, 'destroy'])->name('tax.destroy');
+    });
+
+    Route::prefix('settings')->group(function () {
+        Route::get('/index', [SettingsController::class, 'index'])->name('setting.index');
     });
 });

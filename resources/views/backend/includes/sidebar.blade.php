@@ -368,43 +368,14 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                            aria-expanded="false" href="#">
-                            <i class="nav-main-link-icon fa fa-grip-vertical"></i>
-                            <span class="nav-main-link-name">Constant</span>
+                        <a class="nav-main-link" href="{{ route('setting.index') }}">
+                            <i class="nav-main-link-icon fa fa-gears"></i>
+                            <span class="nav-main-link-name">Application Settings</span>
                         </a>
-                        <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
-                                    <span class="nav-main-link-name">Taxes</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
-                                    <span class="nav-main-link-name">Category</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
-                                    <span class="nav-main-link-name">Unit</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
-                                    <span class="nav-main-link-name">Contract Type</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-main-item">
                         <a class="nav-main-link" href="be_blocks_styles.html">
-                            <i class="nav-main-link-icon fa fa-house-user"></i>
+                            <i class="nav-main-link-icon fa fa-gear"></i>
                             <span class="nav-main-link-name">Company Settings</span>
                         </a>
                     </li>

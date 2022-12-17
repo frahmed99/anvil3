@@ -22,7 +22,8 @@
     <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
+    @yield('css')
+
     @vite(['resources/sass/main.scss', 'resources/js/codebase/app.js'])
     @notifyCss
-    @yield('css')
     @yield('js')

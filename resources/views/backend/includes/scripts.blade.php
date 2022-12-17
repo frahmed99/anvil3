@@ -1,5 +1,6 @@
 <x:notify-messages />
 @notifyJs
+
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 <script type="text/javascript">
     $(function() {
