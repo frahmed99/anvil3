@@ -6,7 +6,6 @@ use App\Models\Tax;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
 class TaxController extends Controller
 {
     /**
@@ -63,25 +62,16 @@ class TaxController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Tax  $tax
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tax $tax)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Tax  $tax
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tax $tax)
+    public function edit($id)
     {
-        //
+        $tax = Tax::find($id);
+        dd($tax);
+        //return view('backend.pages.settings.taxes.index', compact('tax'));
     }
 
     /**
@@ -91,9 +81,27 @@ class TaxController extends Controller
      * @param  \App\Models\Tax  $tax
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tax $tax)
+    public function update(Request $request, $id)
     {
-        //
+        $tax = Tax::find($id);
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'rate' => 'required|numeric|between:0,100'
+            ],
+            [
+                'name.required' => 'The Tax Name Is Required',
+                'name.unique' => 'Tax Already Exists',
+                'rate.numeric' => 'Tax Rate Must Be a Number in Percentage',
+                'rate.required' => 'Tax Value Is Required',
+                'rate.between:0,100' => 'Tax Value Must Be Between 0 and 100',
+            ]
+        );
+        $tax->name = $request->name;
+        $tax->rate = $request->rate;
+        $tax->save();
+        smilify('success', 'Tax Updated Successfully');
+        return redirect()->route('tax.index');
     }
 
     /**

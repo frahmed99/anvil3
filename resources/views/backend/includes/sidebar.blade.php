@@ -368,7 +368,7 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="{{ route('setting.index') }}">
+                        <a class="nav-main-link" href="{{ route('tax.index') }}">
                             <i class="nav-main-link-icon fa fa-gears"></i>
                             <span class="nav-main-link-name">Application Settings</span>
                         </a>

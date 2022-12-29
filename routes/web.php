@@ -1,6 +1,7 @@
 <?php
 
 use Auth\LoginController;
+use App\Http\Livewire\Tax\TaxIndex;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CustomerController;
@@ -9,7 +10,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\Settings\TaxController;
 use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\Settings\SettingsController;
+use App\Http\Controllers\Settings\UnitController;
+use App\Http\Controllers\Settings\CategoryController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
@@ -108,16 +110,30 @@ Route::middleware([
     });
 
     //Tax Management
-    Route::prefix('tax')->group(function () {
+    Route::prefix('settings/tax')->group(function () {
         Route::get('/index', [TaxController::class, 'index'])->name('tax.index');
         Route::get('/create', [TaxController::class, 'create'])->name('tax.create');
         Route::post('/store', [TaxController::class, 'store'])->name('tax.store');
-        Route::get('/edit/{id}', [TaxController::class, 'edit'])->name('tax.edit');
-        Route::post('/update/{id}', [TaxController::class, 'update'])->name('tax.update');
+        // Route::get('/edit/{id}', [TaxController::class, 'edit'])->name('tax.edit');
+        // Route::post('/update/{id}', [TaxController::class, 'update'])->name('tax.update');
         Route::get('/destroy/{id}', [TaxController::class, 'destroy'])->name('tax.destroy');
     });
 
-    Route::prefix('settings')->group(function () {
-        Route::get('/index', [SettingsController::class, 'index'])->name('setting.index');
+    Route::prefix('settings/category')->group(function () {
+        Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+        // Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+        // Route::post('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::get('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    });
+
+    Route::prefix('settings/unit')->group(function () {
+        Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
+        // Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+        // Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+        // Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+        // Route::post('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+        // Route::get('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
 });
