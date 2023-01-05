@@ -3,24 +3,25 @@
     Taxes - Anvil Accounts
 @endsection
 
-@section('css')
-@stop
-
 @section('js')
+    @include('backend.pages.settings.partials.scripts')
 @stop
 @section('content')
     <div class="content">
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
             <a class="breadcrumb-item" href="{{ '/dashboard' }}">Dashboard</a>
-            <span class="breadcrumb-item active">Taxes</span>
+            <span class="breadcrumb-item active">Settings</span>
         </nav>
         <div class="row">
             <div class="col-md-5 col-xl-3">
-                <!-- Collapsible Inbox Navigation -->
                 <div class="js-inbox-nav d-none d-md-block">
                     <div class="block block-rounded block-themed">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Application Settings</h3>
+                            <div class="block-options">
+                                <button type="button" class="btn-block-option" data-toggle="block-option"
+                                    data-action="content_toggle"></button>
+                            </div>
                         </div>
                         <div class="block-content p-3">
                             <ul class="nav nav-pills flex-column">
@@ -43,8 +44,8 @@
                                     <hr class="my-1">
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center justify-content-between"
-                                        href="javascript:void(0)">
+                                    <a class="nav-link{{ request()->is('settings/unit/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                        href="{{ route('unit.index') }}">
                                         <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Unit</span>
                                     </a>
                                 </li>
@@ -53,9 +54,15 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="block-header block-header-default">
+                            <h3 class="block-title">Company Settings</h3>
+                            <div class="block-options">
+                                <button type="button" class="btn-block-option" data-toggle="block-option"
+                                    data-action="content_toggle"></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- END Collapsible Inbox Navigation -->
             </div>
             <div class="col-md-7 col-xl-9">
                 <!-- SubContent -->
@@ -63,5 +70,6 @@
                 <!-- END SubContent -->
             </div>
         </div>
+
     </div>
 @stop

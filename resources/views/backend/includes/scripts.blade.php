@@ -30,3 +30,9 @@
         });
     });
 </script>
+
+@livewireScripts
+<script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+@component('livewire-notification::components.toast')
+@endcomponent
+@include('vendor.lara-izitoast.toast')

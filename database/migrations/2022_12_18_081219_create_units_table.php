@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('created_by')->default('0');
             $table->timestamps();
         });
     }

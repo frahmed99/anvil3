@@ -3,16 +3,14 @@
 
     <title>@yield('title', 'Anvil Accounts')</title>
 
-    <meta name="description"
-        content="Codebase - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-    <meta name="author" content="pixelcave">
+    <meta name="description" content="Anvil Accounts &amp; Created By ReachIT Zambia">
+    <meta name="author" content="reachitzm">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="Codebase - Bootstrap 5 Admin Template &amp; UI Framework">
+    <meta property="og:title" content="Anvil Accounts &amp; UI Framework">
     <meta property="og:site_name" content="Codebase">
-    <meta property="og:description"
-        content="Codebase - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta property="og:description" content="Anvil Accounts &amp; Created By ReachIT Zambia">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -26,4 +24,7 @@
 
     @vite(['resources/sass/main.scss', 'resources/js/codebase/app.js'])
     @notifyCss
+    @livewireStyles
+    <link href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css" rel="stylesheet"
+        type="text/css" />
     @yield('js')
