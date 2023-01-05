@@ -3,9 +3,6 @@
     Taxes - Anvil Accounts
 @endsection
 
-@section('js')
-    @include('backend.pages.settings.partials.scripts')
-@stop
 @section('content')
     <div class="content">
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
