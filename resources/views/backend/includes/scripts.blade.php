@@ -1,5 +1,6 @@
 <x:notify-messages />
 @notifyJs
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 <script type="text/javascript">
@@ -11,7 +12,7 @@
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
                 color: '#F0F2F5',
-                imageUrl: '/media/gifs/trash3.gif',
+                imageUrl: '/media/gifs/warning.gif',
                 background: '#232323',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
@@ -20,11 +21,12 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = link
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Delete Was Successfull',
+                        imageUrl: '/media/gifs/trash.gif',
+                        background: '#232323',
+                    })
                 }
             })
         });
@@ -36,3 +38,4 @@
 @component('livewire-notification::components.toast')
 @endcomponent
 @include('vendor.lara-izitoast.toast')
+@yield('js')

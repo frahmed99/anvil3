@@ -1,6 +1,6 @@
 <div class="col-md-7 col-xl-12">
     <!-- Message List -->
-    @include('livewire.settings.modals.addCategory')
+    @include('livewire.settings.modals.category')
     <div class="block block-rounded block-themed">
         <div class="block-header block-header-default">
             <h3 class="block-title">{{ __('CATEGORY') }}</h3>
@@ -12,6 +12,9 @@
             </div>
         </div>
         <div class="block-content">
+            <h2>The category helps you classify your items, incomes, expenses, and other records.</h2>
+            <input type="search" wire:model="search" class="form-control float-end mx-2" placeholder="Search..."
+                style="width: 230px" />
             <table class="table table-bordered table-striped table-vcenter">
                 <thead>
                     <tr>
@@ -47,5 +50,4 @@
             </div>
         </div>
     </div>
-    <!-- END Message List -->
 </div>

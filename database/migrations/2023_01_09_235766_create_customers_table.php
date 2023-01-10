@@ -15,24 +15,14 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('customerId');
+            $table->string('customerId');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('company')->nullable();
+            $table->string('email')->nullable();
             $table->string('contact')->nullable();
-            $table->integer('createdBy')->default(0);
             $table->string('taxId');
-            $table->string('billingName');
-            $table->string('billingCountry');
-            $table->string('billingState');
-            $table->string('billingCity');
-            $table->string('billingZip');
-            $table->text('billingAddress');
-            $table->string('shippingName');
-            $table->string('shippingCountry');
-            $table->string('shippingState');
-            $table->string('shippingCity');
-            $table->string('shippingZip');
-            $table->text('shippingAddress');
+            $table->text('billingAddress')->nullable();
+            $table->text('shippingAddress')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

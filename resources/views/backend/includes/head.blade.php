@@ -27,4 +27,3 @@
     @livewireStyles
     <link href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css" rel="stylesheet"
         type="text/css" />
-    @yield('js')

@@ -1,6 +1,6 @@
 <div wire:ignore.self class="modal" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="block block-rounded shadow-none mb-0">
                 <div class="block-header block-header-default">
@@ -32,13 +32,24 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-floating mb-4">
+                                {{-- <div class="form-floating mb-4">
                                     <input type="text" class="form-control" wire:model="type" id="type"
                                         name="type" placeholder=" ">
                                     <label class="form-label" for="type">Category Type</label>
                                     @error('type')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div> --}}
+                                <div class="form-floating mb-4">
+                                    <select class="form-select" wire:model="type" id="type" name="type"
+                                        placeholder=" ">
+                                        <option selected>Income Accounts</option>
+                                        <option value="1">Expense Accounts</option>
+                                        <option value="2">Equity Accounts</option>
+                                        <option value="3">Liability Accounts</option>
+                                        <option value="3">Asset Accounts</option>
+                                    </select>
+                                    <label class="form-label" for="example-select-floating">Category</label>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +71,7 @@
 
 <div wire:ignore.self class="modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="block block-rounded shadow-none mb-0">
                 <div class="block-header block-header-default">
@@ -84,8 +95,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <textarea type="text" class="form-control" wire:model="description" id="description" name="description"
-                                        placeholder=" "></textarea>
+                                    <textarea rows="10" type="text" class="form-control" wire:model="description" id="description"
+                                        name="description" placeholder=" "></textarea>
                                     <label class="form-label" for="description">Description</label>
                                     @error('description')
                                         <span class="text-danger">{{ $message }}</span>

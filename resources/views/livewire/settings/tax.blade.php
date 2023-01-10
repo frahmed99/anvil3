@@ -1,5 +1,5 @@
 <div class="col-md-7 col-xl-12">
-    @include('livewire.settings.modals.addTax')
+    @include('livewire.settings.modals.tax')
     <div class="block block-rounded block-themed">
         <div class="block-header block-header-default">
             <h3 class="block-title">{{ __('TAX') }}</h3>

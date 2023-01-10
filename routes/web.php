@@ -94,6 +94,7 @@ Route::middleware([
         Route::get('/index', [CustomerController::class, 'index'])->name('customer.index');
         Route::get('/create', [CustomerController::class, 'create'])->name('customer.create');
         Route::post('/store', [CustomerController::class, 'store'])->name('customer.store');
+        Route::get('/show/{id}', [CustomerController::class, 'show'])->name('customer.show');
         Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
         Route::post('/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
         Route::get('/destroy/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
@@ -104,6 +105,7 @@ Route::middleware([
         Route::get('/index', [VendorController::class, 'index'])->name('vendor.index');
         Route::get('/create', [VendorController::class, 'create'])->name('vendor.create');
         Route::post('/store', [VendorController::class, 'store'])->name('vendor.store');
+        Route::get('/show/{id}', [VendorController::class, 'show'])->name('vendor.show');
         Route::get('/edit/{id}', [VendorController::class, 'edit'])->name('vendor.edit');
         Route::post('/update/{id}', [VendorController::class, 'update'])->name('vendor.update');
         Route::get('/destroy/{id}', [VendorController::class, 'destroy'])->name('vendor.destroy');

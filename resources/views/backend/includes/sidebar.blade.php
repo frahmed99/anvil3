@@ -123,7 +123,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_styles.html">
+                        <a class="nav-main-link" href="{{ route('vendor.index') }}">
                             <i class="nav-main-link-icon fa fa-house-user"></i>
                             <span class="nav-main-link-name">{{ __('Vendors') }}</span>
                         </a>

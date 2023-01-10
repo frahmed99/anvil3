@@ -100,6 +100,7 @@ class Tax extends Component
     public function resetForm()
     {
         $this->name = null;
+        $this->rate = null;
         $this->resetErrorBag();
     }
 }

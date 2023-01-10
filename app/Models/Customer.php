@@ -13,21 +13,11 @@ class Customer extends Model
     protected $fillable = [
         'customerid',
         'name',
+        'company',
         'email',
         'contact',
         'taxId',
-        'createdBy',
-        'billingName',
-        'billingCountry',
-        'billingState',
-        'billingCity',
-        'billingZip',
         'billingAddress',
-        'shippingName',
-        'shippingCountry',
-        'shippingState',
-        'shippingCity',
-        'shippingZip',
         'shippingAddress',
     ];
 }

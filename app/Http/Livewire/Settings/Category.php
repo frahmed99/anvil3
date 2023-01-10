@@ -11,13 +11,17 @@ class Category extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    public $search = '';
+
     protected $listeners = ['deleteConfirmed' => 'deleteCategory'];
 
     public $name, $type, $description, $categoryId, $deleteId;
 
     public function render()
     {
-        $categories = CategoryModel::orderBy('id', 'DESC')->paginate(10);
+        $categories = CategoryModel::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'DESC')->paginate(10);
+
+        // $categories = CategoryModel::orderBy('id', 'DESC')->paginate(10);
         return view('livewire.settings.category', ['categories' => $categories]);
     }
 
@@ -25,7 +29,8 @@ class Category extends Component
     {
         return [
             'name' => 'required|max:100|unique:categories',
-            'type' => 'required'
+            'type' => 'required',
+            'description' => 'max:250',
         ];
     }
 
@@ -73,7 +78,8 @@ class Category extends Component
 
         CategoryModel::where('id', $this->categoryId)->update([
             'name' => $validatedData['name'],
-            'type' => $validatedData['type']
+            'type' => $validatedData['type'],
+            'description' => $validatedData['description'],
         ]);
         session()->flash('message', 'Category Updated Successfully');
         $this->resetForm();
@@ -100,6 +106,8 @@ class Category extends Component
     public function resetForm()
     {
         $this->name = null;
+        $this->type = null;
+        $this->description = null;
         $this->resetErrorBag();
     }
 }

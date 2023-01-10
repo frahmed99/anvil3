@@ -5,6 +5,7 @@
     })
 </script>
 
+
 <script type="text/javascript">
     window.addEventListener('deleteConfirmation', event => {
         Swal.fire({

@@ -125,6 +125,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+        smilify('success', 'User Deleted Successfully');
         return redirect()->route('user.index');
     }
 }
