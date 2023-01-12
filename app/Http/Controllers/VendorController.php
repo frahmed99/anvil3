@@ -44,10 +44,10 @@ class VendorController extends Controller
         $vendor->taxId = $data['taxId'];
         $vendor->billingAddress = $data['billingAddress'];
         $vendor->shippingAddress = $data['shippingAddress'];
-        $vendorId = Helper::IDGenerator(new Vendor, 'vendorId', 'CUST', 6);
+        $vendorId = Helper::IDGenerator(new Vendor, 'vendorId', 'VEND', 6);
         $vendor->vendorId = $vendorId;
         $vendor->save();
-        smilify('success', 'Vendor Updated Successfully');
+        smilify('success', 'Vendor Added Successfully');
 
         return redirect()->route('vendor.index');
     }

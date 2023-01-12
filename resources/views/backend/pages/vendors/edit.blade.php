@@ -1,6 +1,6 @@
 @extends('backend.layouts.default')
 @section('title')
-    Add Vendor - Anvil Accounts
+    Edit Vendor - Anvil Accounts
 @endsection
 @section('css')
     @include('backend.pages.vendors.partials.styles')

@@ -136,7 +136,7 @@
                         </a>
                         <ul class="nav-main-submenu">
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
+                                <a class="nav-main-link" href="{{ route('bank.index') }}">
                                     <span class="nav-main-link-name">{{ __('Accounts') }}</span>
                                 </a>
                             </li>

@@ -3,6 +3,7 @@
 use Auth\LoginController;
 use App\Http\Livewire\Tax\TaxIndex;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\AuthController;
@@ -111,16 +112,27 @@ Route::middleware([
         Route::get('/destroy/{id}', [VendorController::class, 'destroy'])->name('vendor.destroy');
     });
 
-    //Tax Management
+    //Tax Management Using Livewire
     Route::prefix('settings/tax')->group(function () {
         Route::get('/index', [TaxController::class, 'index'])->name('tax.index');
     });
-
+    //Category Management Using Livewire
     Route::prefix('settings/category')->group(function () {
         Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
     });
-
+    //Unit Management Using Livewire
     Route::prefix('settings/unit')->group(function () {
         Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
+    });
+
+    //Bank Management
+    Route::prefix('bank')->group(function () {
+        Route::get('/index', [BankController::class, 'index'])->name('bank.index');
+        Route::get('/create', [BankController::class, 'create'])->name('bank.create');
+        Route::post('/store', [BankController::class, 'store'])->name('bank.store');
+        Route::get('/show/{id}', [BankController::class, 'show'])->name('bank.show');
+        Route::get('/edit/{id}', [BankController::class, 'edit'])->name('bank.edit');
+        Route::post('/update/{id}', [BankController::class, 'update'])->name('bank.update');
+        Route::get('/destroy/{id}', [BankController::class, 'destroy'])->name('bank.destroy');
     });
 });
