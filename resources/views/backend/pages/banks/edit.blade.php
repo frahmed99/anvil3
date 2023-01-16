@@ -13,14 +13,14 @@
     <div class="content">
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
             <a class="breadcrumb-item" href="{{ '/dashboard' }}">{{ __('Dashboard') }}</a>
-            <a class="breadcrumb-item" href="{{ '/bank/index' }}">{{ __('Banks') }}</a>
+            <a class="breadcrumb-item" href="{{ '/bank/accounts/index' }}">{{ __('Banks') }}</a>
             <span class="breadcrumb-item active">{{ __('Add Bank') }}</span>
         </nav>
         <div class="block block-themed block-rounded">
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
                     <span>{{ __('Edit Bank') }}</span>
-                    <a href="{{ '/bank/index' }}" type="button" class="btn btn-sm btn-alt-primary">
+                    <a href="{{ '/bank/accounts/index' }}" type="button" class="btn btn-sm btn-alt-primary">
                         <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Back To Banks List') }}
                     </a>
                 </h2>
@@ -69,15 +69,28 @@
                                             @enderror
                                         </span>
                                     </div>
-                                    <div class="form-floating mb-4">
-                                        <input type="text" class="form-control" id="openingBalance" name="openingBalance"
-                                            placeholder=" " value="{{ $bank->openingBalance }}">
-                                        <label class="form-label" for="openingBalance">Opening Balance</label>
-                                        <span style="color:red">
-                                            @error('openingBalance')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
+                                    <div class="form-group row">
+                                        <div class="form-floating col-2 mb-4">
+                                            <select class="form-select" id="currencyCode" name="currencyCode"
+                                                aria-label="Currency Code">
+                                                @foreach ($codes as $code => $value)
+                                                    <option value="{{ $code }}"
+                                                        {{ old('currencyCode', $bank->currencyCode) == $code ? 'selected' : '' }}>
+                                                        {{ $code }}</option>
+                                                @endforeach
+                                            </select>
+                                            <label class="form-label" for="currencyCode">Currency</label>
+                                        </div>
+                                        <div class="form-floating col-10 mb-4">
+                                            <input type="text" class="form-control" id="balance" name="balance"
+                                                placeholder=" " value="{{ $bank->balance }}">
+                                            <label class="form-label" for="balance">Opening Balance</label>
+                                            <span style="color:red">
+                                                @error('balance')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
                                     </div>
                                     <div class="form-floating mb-4">
                                         <input type="text" class="form-control" id="contact" name="contact"

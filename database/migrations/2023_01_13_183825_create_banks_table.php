@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('banks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('accountName');
-            $table->string('bankName');
-            $table->string('accountNumber');
-            $table->float('openingBalance', 15, 2)->default('0.00');
+            $table->string('bankName')->nullable();
+            $table->string('currencyCode');
+            $table->string('accountNumber')->nullable();
+            $table->float('balance', 15, 2)->default('0.00');
             $table->string('contact')->nullable();
             $table->text('address')->nullable();
             $table->integer('created_by')->default('0');

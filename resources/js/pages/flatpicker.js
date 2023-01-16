@@ -1,0 +1,1 @@
+Codebase.helpersOnLoad(["js-flatpickr"]);

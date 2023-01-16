@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TransferController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\RolesController;
@@ -126,7 +127,7 @@ Route::middleware([
     });
 
     //Bank Management
-    Route::prefix('bank')->group(function () {
+    Route::prefix('bank/accounts')->group(function () {
         Route::get('/index', [BankController::class, 'index'])->name('bank.index');
         Route::get('/create', [BankController::class, 'create'])->name('bank.create');
         Route::post('/store', [BankController::class, 'store'])->name('bank.store');
@@ -134,5 +135,14 @@ Route::middleware([
         Route::get('/edit/{id}', [BankController::class, 'edit'])->name('bank.edit');
         Route::post('/update/{id}', [BankController::class, 'update'])->name('bank.update');
         Route::get('/destroy/{id}', [BankController::class, 'destroy'])->name('bank.destroy');
+    });
+    Route::prefix('bank/transfers')->group(function () {
+        Route::get('/index', [TransferController::class, 'index'])->name('transfer.index');
+        Route::get('/create', [TransferController::class, 'create'])->name('transfer.create');
+        Route::post('/store', [TransferController::class, 'store'])->name('transfer.store');
+        Route::get('/show/{id}', [TransferController::class, 'show'])->name('transfer.show');
+        Route::get('/edit/{id}', [TransferController::class, 'edit'])->name('transfer.edit');
+        Route::post('/update/{id}', [TransferController::class, 'update'])->name('transfer.update');
+        Route::get('/destroy/{id}', [TransferController::class, 'destroy'])->name('transfer.destroy');
     });
 });

@@ -9,12 +9,13 @@ class Bank extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'holderName',
+        'accountName',
         'bankName',
+        'currencyCode',
         'accountNumber',
-        'openingBalance',
-        'contactNumber',
-        'bankAddress',
+        'balance',
+        'contact',
+        'address',
         'created_by',
     ];
 }

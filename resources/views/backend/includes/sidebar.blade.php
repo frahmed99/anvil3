@@ -128,22 +128,22 @@
                             <span class="nav-main-link-name">{{ __('Vendors') }}</span>
                         </a>
                     </li>
-                    <li class="nav-main-item">
+                    <li class="nav-main-item{{ request()->is('bank/*') ? ' open' : '' }}">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                             aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fa fa-grip-vertical"></i>
                             <span class="nav-main-link-name">{{ __('Banking') }}</span>
                         </a>
                         <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
+                            <li class="nav-main-item{{ request()->is('bank/accounts') ? ' active' : '' }}">
                                 <a class="nav-main-link" href="{{ route('bank.index') }}">
                                     <span class="nav-main-link-name">{{ __('Accounts') }}</span>
                                 </a>
                             </li>
                         </ul>
                         <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
+                            <li class="nav-main-item{{ request()->is('bank/transfers') ? ' active' : '' }}">
+                                <a class="nav-main-link" href="{{ route('transfer.index') }}">
                                     <span class="nav-main-link-name">{{ __('Transfer') }}</span>
                                 </a>
                             </li>
