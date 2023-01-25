@@ -13,13 +13,6 @@
             <div class="col-md-5 col-xl-3">
                 <div class="js-inbox-nav d-none d-md-block">
                     <div class="block block-rounded block-themed">
-                        <div class="block-header block-header-default">
-                            <h3 class="block-title">Application Settings</h3>
-                            <div class="block-options">
-                                <button type="button" class="btn-block-option" data-toggle="block-option"
-                                    data-action="content_toggle"></button>
-                            </div>
-                        </div>
                         <div class="block-content p-3">
                             <ul class="nav nav-pills flex-column">
                                 <li class="nav-item">
@@ -49,14 +42,35 @@
                                 <li class="nav-item">
                                     <hr class="my-1">
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link{{ request()->is('settings/companysettings/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                        href="{{ route('company.index') }}">
+                                        <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Company Settings</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <hr class="my-1">
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link{{ request()->is('settings/currency/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                        href="{{ route('currency.index') }}">
+                                        <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Currency
+                                            Settings</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <hr class="my-1">
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link{{ request()->is('settings/finance/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                        href="#">
+                                        <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Finance Settings</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <hr class="my-1">
+                                </li>
                             </ul>
-                        </div>
-                        <div class="block-header block-header-default">
-                            <h3 class="block-title">Company Settings</h3>
-                            <div class="block-options">
-                                <button type="button" class="btn-block-option" data-toggle="block-option"
-                                    data-action="content_toggle"></button>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -10,16 +10,13 @@
     <div class="content">
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
             <a class="breadcrumb-item" href="{{ '/dashboard' }}">{{ __('Dashboard') }}</a>
-            <a class="breadcrumb-item" href="{{ '/role/index' }}">{{ __('Roles') }}</a>
+            <a class="breadcrumb-item" href="{{ '/staff/role/index' }}">{{ __('Roles') }}</a>
             <span class="breadcrumb-item active">{{ __('Add Role') }}</span>
         </nav>
         <div class="block block-themed block-rounded">
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
                     <span>{{ __('Roles') }}</span>
-                    <a href="{{ '/staff/role/index' }}" type="button" class="btn btn-sm btn-alt-primary">
-                        <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Back To Roles List') }}
-                    </a>
                 </h2>
                 <div class="block-content block-content-full">
                     <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
@@ -94,7 +91,13 @@
                                 @endforeach
                             </table>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save Role</button>
+                        <div class="text-right mb-4">
+                            <a href="{{ '/staff/role/index' }}" type="button"
+                                class="btn btn-alt-danger">{{ __('Cancel') }}
+                            </a>
+                            <span></span>
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
                     </form>
                 </div>
             </div>

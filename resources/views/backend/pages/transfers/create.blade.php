@@ -13,16 +13,13 @@
     <div class="content">
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
             <a class="breadcrumb-item" href="{{ '/dashboard' }}">{{ __('Dashboard') }}</a>
-            <a class="breadcrumb-item" href="{{ '/transfer/index' }}">{{ __('Transfers') }}</a>
+            <a class="breadcrumb-item" href="{{ '/bank/transfers/index' }}">{{ __('Transfers') }}</a>
             <span class="breadcrumb-item active">{{ __('Add Transfer') }}</span>
         </nav>
         <div class="block block-themed block-rounded">
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
                     <span>{{ __('Add Transfer') }}</span>
-                    <a href="{{ '/transfer/index' }}" type="button" class="btn btn-sm btn-alt-primary">
-                        <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Back To Transfers List') }}
-                    </a>
                 </h2>
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
@@ -40,11 +37,14 @@
                                 </div>
                                 <div class="col-lg-8 offset-lg-1">
                                     <div class="form-group row">
-                                        <div class="form-floating col-3 mb-4">
+                                        <div class="form-floating col-4 mb-4">
                                             <select class="form-select" id="fromAccount" name="fromAccount"
-                                                aria-label="Floating label select example" value="{{ old('fromAccount') }}">
+                                                aria-label="Floating label select example" value="{{ old('fromAccount') }}"
+                                                onchange="getFromAccountRate()">
                                                 @foreach ($banks as $bank)
-                                                    <option value="{{ $bank->accountName }}">{{ $bank->accountName }}
+                                                    <option value="{{ $bank->id }}"
+                                                        data-currency-code="{{ $bank->currencyCode }}">
+                                                        {{ $bank->accountName }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -55,21 +55,24 @@
                                                 @enderror
                                             </span>
                                         </div>
-                                        <div class="form-floating col-3 mb-4">
-                                            <input type="text" class="form-control" id="balance" name="balance"
-                                                placeholder=" " value="{{ old('balance') }}">
-                                            <label class="form-label" for="balance">Balance</label>
+                                        <div class="form-floating col-4 mb-4">
+                                            <input type="text" class="form-control" id="rate" name="rate"
+                                                placeholder=" " value="{{ old('rate') }}">
+                                            <label class="form-label" for="rate">Currency Rate</label>
                                             <span style="color:red">
-                                                @error('balance')
+                                                @error('rate')
                                                     {{ $message }}
                                                 @enderror
                                             </span>
                                         </div>
-                                        <div class="form-floating col-3 mb-4">
+                                        <div class="form-floating col-4 mb-4">
                                             <select class="form-select" id="toAccount" name="toAccount"
-                                                aria-label="Floating label select example" value="{{ old('toAccount') }}">
+                                                aria-label="Floating label select example" value="{{ old('toAccount') }}"
+                                                onchange="getToAccountRate()">
                                                 @foreach ($banks as $bank)
-                                                    <option value="{{ $bank->accountName }}">{{ $bank->accountName }}
+                                                    <option value="{{ $bank->id }}"
+                                                        data-currency-code="{{ $bank->currencyCode }}">
+                                                        {{ $bank->accountName }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -80,29 +83,29 @@
                                                 @enderror
                                             </span>
                                         </div>
-                                        <div class="form-floating col-3 mb-4">
-                                            <input type="text" class="form-control" id="balance" name="balance"
-                                                placeholder=" " value="{{ old('balance') }}">
-                                            <label class="form-label" for="balance">Balance</label>
-                                            <span style="color:red">
-                                                @error('balance')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
-                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="form-floating col-6 mb-4">
-                                            <input type="text" class="form-control" id="amount" name="amount"
-                                                placeholder=" " value="{{ old('amount') }}">
-                                            <label class="form-label" for="amount">Amount</label>
+                                        <div class="form-floating col-4 mb-4">
+                                            <input type="text" class="form-control" id="fromAmount" name="fromAmount"
+                                                placeholder=" " value="{{ old('fromAmount') }}">
+                                            <label class="form-label" for="fromAmount">Amount</label>
                                             <span style="color:red">
-                                                @error('amount')
+                                                @error('fromAmount')
                                                     {{ $message }}
                                                 @enderror
                                             </span>
                                         </div>
-                                        <div class="form-floating col-6 mb-4">
+                                        <div class="form-floating col-4 mb-4">
+                                            <input readonly type="text" class="form-control" id="toAmount"
+                                                name="toAmount" placeholder=" " value="{{ old('toAmount') }}">
+                                            <label class="form-label" for="toAmount">Converted Amount(Read Only)</label>
+                                            <span style="color:red">
+                                                @error('toAmount')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
+                                        <div class="form-floating col-4 mb-4">
                                             <input type="text" class="js-flatpickr form-control" id="date"
                                                 name="date" placeholder="d-m-Y" data-date-format="d-m-Y"
                                                 value="{{ date('d-m-Y') }}">
@@ -128,8 +131,12 @@
                                             @enderror
                                         </span>
                                     </div>
-                                    <div class="mb-4">
-                                        <button type="submit" class="btn btn-alt-primary">Save</button>
+                                    <div class="text-right mb-4">
+                                        <a href="{{ '/bank/transfers/index' }}" type="button"
+                                            class="btn btn-alt-danger">{{ __('Cancel') }}
+                                        </a>
+                                        <span></span>
+                                        <button type="submit" class="btn btn-success">Save</button>
                                     </div>
                                 </div>
                             </div>

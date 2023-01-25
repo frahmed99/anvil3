@@ -149,15 +149,15 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-main-item">
+                    <li class="nav-main-item"{{ request()->is('income/*') ? ' open' : '' }}">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                             aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fa fa-grip-vertical"></i>
                             <span class="nav-main-link-name">Income</span>
                         </a>
                         <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
+                            <li class="nav-main-item{{ request()->is('bank/accounts') ? ' active' : '' }}">
+                                <a class="nav-main-link" href="{{ route('quotation.index') }}">
                                     <span class="nav-main-link-name">Quotations</span>
                                 </a>
                             </li>

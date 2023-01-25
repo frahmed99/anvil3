@@ -22,9 +22,6 @@
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
                     <span>Edit {{ $user->name }}</span>
-                    <a href="{{ '/staff/user/index' }}" type="button" class="btn btn-sm btn-alt-primary">
-                        <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Back To Users List') }}
-                    </a>
                 </h2>
                 <div class="block-content block-content-full">
                     <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
@@ -88,8 +85,12 @@
                                                 name="password_confirmation">
                                             <label class="form-label" for="password_confirmation">Confirm Password</label>
                                         </div>
-                                        <div class="mb-4">
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        <div class="text-right mb-4">
+                                            <a href="{{ '/staff/user/index' }}" type="button"
+                                                class="btn btn-alt-danger">{{ __('Cancel') }}
+                                            </a>
+                                            <span></span>
+                                            <button type="submit" class="btn btn-success">Save</button>
                                         </div>
                                     </div>
                                 </div>

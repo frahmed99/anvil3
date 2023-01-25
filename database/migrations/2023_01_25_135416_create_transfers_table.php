@@ -15,15 +15,19 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('fromAccount')->default('0');
-            $table->integer('toAccount')->default('0');
-            $table->float('amount', 15, 2)->default('0');
+            $table->unsignedBigInteger('from_account_id');
+            $table->unsignedBigInteger('to_account_id');
+            $table->float('fromAmount', 15, 4);
+            $table->float('toAmount', 15, 4);
+            $table->double('rate', 15, 8);
             $table->date('date');
-            $table->integer('paymentMethod')->default('0');
-            $table->string('reference')->nullable();
-            $table->text('description');
+            $table->boolean('reversed')->default(0);
+            $table->string('reference');
+            $table->text('description')->nullable();
             $table->integer('created_by')->default('0');
             $table->timestamps();
+            $table->foreign('from_account_id')->references('id')->on('banks');
+            $table->foreign('to_account_id')->references('id')->on('banks');
         });
     }
 

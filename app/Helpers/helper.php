@@ -2,9 +2,10 @@
 
 namespace App\Helpers;
 
+use App\Models\Bank;
+
 class Helper
 {
-
     public static function IDGenerator($model, $trow, $prefix, $length = 4)
     {
         $data = $model::orderBy('id', 'desc')->first();
@@ -24,5 +25,37 @@ class Helper
             $zeros .= "0";
         }
         return $prefix . '-' . $zeros . $last_number;
+    }
+
+    public static function bankAccountBalance($id, $amount, $type)
+    {
+        $bankAccount = Bank::find($id);
+        if ($bankAccount) {
+            if ($type == 'credit') {
+                $bankAccount->balance += $amount;
+                $bankAccount->save();
+            } elseif ($type == 'debit') {
+                $bankAccount->balance -= $amount;
+                $bankAccount->save();
+            }
+        }
+    }
+    public static function bankReversalBalance($id, $amount, $type)
+    {
+        $bankAccount = Bank::find($id);
+        if ($bankAccount) {
+            if ($type == 'credit') {
+                $bankAccount->balance += $amount;
+                $bankAccount->save();
+            } elseif ($type == 'debit') {
+                $bankAccount->balance -= $amount;
+                $bankAccount->save();
+            }
+        }
+    }
+    public static function getRate($account_id)
+    {
+        $account = Bank::find($account_id);
+        return $account->rate;
     }
 }

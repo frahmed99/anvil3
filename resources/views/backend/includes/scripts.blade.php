@@ -1,32 +1,7 @@
-<script>
-    function setTheme(theme) {
-        let themePath = '';
-        switch (theme) {
-            case 'elegance':
-                themePath = '/css/themes/elegance.css';
-                break;
-            case 'pulse':
-                themePath = '/css/themes/pulse.css';
-                break;
-            case 'flat':
-                themePath = '/css/themes/flat.css';
-                break;
-            case 'corporate':
-                themePath = '/css/themes/corporate.css';
-                break;
-            case 'earth':
-                themePath = '/css/themes/earth.css';
-                break;
-        }
-        document.getElementById('theme').setAttribute('href', themePath);
-    }
-</script>
-
-
-
 <x:notify-messages />
 @notifyJs
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 <script type="text/javascript">

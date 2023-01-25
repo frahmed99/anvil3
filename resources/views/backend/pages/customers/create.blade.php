@@ -20,9 +20,6 @@
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
                     <span>{{ __('Add Customer') }}</span>
-                    <a href="{{ '/customer/index' }}" type="button" class="btn btn-sm btn-alt-primary">
-                        <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Back To Customers List') }}
-                    </a>
                 </h2>
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
@@ -115,8 +112,12 @@
                                             @enderror
                                         </span>
                                     </div>
-                                    <div class="mb-4">
-                                        <button type="submit" class="btn btn-alt-primary">Save</button>
+                                    <div class="text-right mb-4">
+                                        <a href="{{ '/customer/index' }}" type="button"
+                                            class="btn btn-alt-danger">{{ __('Cancel') }}
+                                        </a>
+                                        <span></span>
+                                        <button type="submit" class="btn btn-success">Save</button>
                                     </div>
                                 </div>
                             </div>

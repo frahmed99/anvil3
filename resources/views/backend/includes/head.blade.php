@@ -20,6 +20,8 @@
     <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     @yield('css')
 
     @vite(['resources/sass/main.scss', 'resources/js/codebase/app.js'])
@@ -27,4 +29,3 @@
     @livewireStyles
     <link href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css" rel="stylesheet"
         type="text/css" />
-    <link rel="stylesheet" id="theme" href="./css/themes/elegance.min.css">

@@ -17,9 +17,6 @@
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
                     <span>Edit {{ $role->name }}</span>
-                    <a href="{{ '/staff/role/index' }}" type="button" class="btn btn-sm btn-alt-primary">
-                        <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Back To Roles List') }}
-                    </a>
                 </h2>
                 <div class="block-content block-content-full">
                     <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
@@ -59,10 +56,6 @@
                                     <tbody>
                                         <tr>
                                             <th class="text-center" scope="">
-                                                @php
-                                                    $permissions = App\Models\Permissions::getpermissionsByGroupName($group->name);
-                                                    $j = 1;
-                                                @endphp
                                                 <div class="form-check form-switch">
                                                     <input type="checkbox" class="form-check-input"
                                                         id="{{ $i }}Management" value="{{ $group->name }}"
@@ -75,6 +68,10 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="role-{{ $i }}-management-checkbox">
+                                                        @php
+                                                            $permissions = App\Models\Permissions::getpermissionsByGroupName($group->name);
+                                                            $j = 1;
+                                                        @endphp
                                                         @foreach ($permissions as $permission)
                                                             <div class="col-lg-8 col-xl-4">
                                                                 <div class="form-check form-switch">
@@ -98,7 +95,13 @@
                                 @endforeach
                             </table>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save Role</button>
+                        <div class="text-right mb-4">
+                            <a href="{{ '/staff/role/index' }}" type="button"
+                                class="btn btn-alt-danger">{{ __('Cancel') }}
+                            </a>
+                            <span></span>
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
                     </form>
                 </div>
             </div>

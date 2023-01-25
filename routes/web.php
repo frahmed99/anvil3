@@ -5,9 +5,12 @@ use App\Http\Livewire\Tax\TaxIndex;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\Settings\TaxController;
@@ -125,7 +128,26 @@ Route::middleware([
     Route::prefix('settings/unit')->group(function () {
         Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
     });
-
+    //Currency Management
+    Route::prefix('setting/currency')->group(function () {
+        Route::get('/index', [CurrencyController::class, 'index'])->name('currency.index');
+        Route::get('/create', [CurrencyController::class, 'create'])->name('currency.create');
+        Route::post('/store', [CurrencyController::class, 'store'])->name('currency.store');
+        Route::get('/show/{id}', [CurrencyController::class, 'show'])->name('currency.show');
+        Route::get('/edit/{id}', [CurrencyController::class, 'edit'])->name('currency.edit');
+        Route::post('/update/{id}', [CurrencyController::class, 'update'])->name('currency.update');
+        Route::get('/destroy/{id}', [CurrencyController::class, 'destroy'])->name('currency.destroy');
+        Route::get('/autocomplete', [CurrencyController::class, 'autocomplete'])->name('currency.autocomplete');
+    });
+    //Company Management
+    Route::prefix('setting/company')->group(function () {
+        Route::get('/index', [CompanyController::class, 'index'])->name('company.index');
+        Route::get('/create', [CompanyController::class, 'create'])->name('company.create');
+        Route::post('/store', [CompanyController::class, 'store'])->name('company.store');
+        Route::get('/show/{id}', [CompanyController::class, 'show'])->name('company.show');
+        Route::get('/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
+        Route::post('/update/{id}', [CompanyController::class, 'update'])->name('company.update');
+    });
     //Bank Management
     Route::prefix('bank/accounts')->group(function () {
         Route::get('/index', [BankController::class, 'index'])->name('bank.index');
@@ -143,6 +165,17 @@ Route::middleware([
         Route::get('/show/{id}', [TransferController::class, 'show'])->name('transfer.show');
         Route::get('/edit/{id}', [TransferController::class, 'edit'])->name('transfer.edit');
         Route::post('/update/{id}', [TransferController::class, 'update'])->name('transfer.update');
+        Route::get('/reversal/{id}', [TransferController::class, 'reversal'])->name('transfer.reversal');
         Route::get('/destroy/{id}', [TransferController::class, 'destroy'])->name('transfer.destroy');
+        Route::get('/reversal/{id}', [TransferController::class, 'reversal'])->name('transfer.reversal');
+    });
+    Route::prefix('income/quotations')->group(function () {
+        Route::get('/index', [QuotationController::class, 'index'])->name('quotation.index');
+        Route::get('/create', [QuotationController::class, 'create'])->name('quotation.create');
+        Route::post('/store', [QuotationController::class, 'store'])->name('quotation.store');
+        Route::get('/show/{id}', [QuotationController::class, 'show'])->name('quotation.show');
+        Route::get('/edit/{id}', [QuotationController::class, 'edit'])->name('quotation.edit');
+        Route::post('/update/{id}', [QuotationController::class, 'update'])->name('quotation.update');
+        Route::get('/destroy/{id}', [QuotationController::class, 'destroy'])->name('quotation.destroy');
     });
 });
