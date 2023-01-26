@@ -18,7 +18,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Settings\UnitController;
 use App\Http\Controllers\Settings\CategoryController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-
+use App\Http\Controllers\Settings\GeneralSettingsController;
 
 //Frontend routes
 
@@ -140,13 +140,9 @@ Route::middleware([
         Route::get('/autocomplete', [CurrencyController::class, 'autocomplete'])->name('currency.autocomplete');
     });
     //Company Management
-    Route::prefix('setting/company')->group(function () {
-        Route::get('/index', [CompanyController::class, 'index'])->name('company.index');
-        Route::get('/create', [CompanyController::class, 'create'])->name('company.create');
-        Route::post('/store', [CompanyController::class, 'store'])->name('company.store');
-        Route::get('/show/{id}', [CompanyController::class, 'show'])->name('company.show');
-        Route::get('/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
-        Route::post('/update/{id}', [CompanyController::class, 'update'])->name('company.update');
+    Route::prefix('setting/general-settings')->group(function () {
+        Route::get('/index', [GeneralSettingsController::class, 'index'])->name('general.index');
+        Route::post('/update', [GeneralSettingsController::class, 'update'])->name('general.update');
     });
     //Bank Management
     Route::prefix('bank/accounts')->group(function () {

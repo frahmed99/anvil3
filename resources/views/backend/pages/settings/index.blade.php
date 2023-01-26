@@ -43,8 +43,8 @@
                                     <hr class="my-1">
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link{{ request()->is('settings/companysettings/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
-                                        href="{{ route('company.index') }}">
+                                    <a class="nav-link{{ request()->is('setting/general-settings/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                        href="{{ route('general.index') }}">
                                         <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Company Settings</span>
                                     </a>
                                 </li>
@@ -52,19 +52,10 @@
                                     <hr class="my-1">
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link{{ request()->is('settings/currency/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                    <a class="nav-link{{ request()->is('setting/currency/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
                                         href="{{ route('currency.index') }}">
                                         <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Currency
                                             Settings</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <hr class="my-1">
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link{{ request()->is('settings/finance/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
-                                        href="#">
-                                        <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Finance Settings</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
