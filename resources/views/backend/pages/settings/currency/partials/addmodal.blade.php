@@ -16,24 +16,16 @@
                 <div class="block-content fs-sm">
                     <form action="{{ route('currency.store') }}" method="post">
                         @csrf
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" class="form-control" required />
+
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="example-text-input-floating"
+                                name="example-text-input-floating" placeholder="John Doe">
+                            <label class="form-label" for="example-text-input-floating">Currency Symbol</label>
                         </div>
-                        <div class="form-group">
-                            <label for="code">Code</label>
-                            <input type="text" name="code" id="code" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="symbol">Symbol</label>
-                            <input type="text" name="symbol" id="symbol" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <select name="status" id="status" class="form-control" required>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                            </select>
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="example-text-input-floating"
+                                name="example-text-input-floating" placeholder="John Doe">
+                            <label class="form-label" for="example-text-input-floating">Currency Code</label>
                         </div>
                     </form>
                 </div>

@@ -34,12 +34,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="form-floating col-6 mb-4">
+                        <div class="form-floating col-4 mb-4">
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder=" "
                                 value="{{ $generalSettings->where('key', 'phoneNumber')->first()->value }}">
                             <label class="form-label" for="phoneNumber">Company Phone</label>
                         </div>
-                        <div class="form-floating col-6 mb-4">
+                        <div class="form-floating col-4 mb-4">
+                            <select class="form-select" id="defaultCurrency" name="defaultCurrency"
+                                aria-label="Default Currency">
+                                @foreach ($codes as $code => $value)
+                                    <option value="{{ $code }}"
+                                        {{ old('defaultCurrency', $generalSettings->where('key', 'defaultCurrency')->first()->value) == $code ? 'selected' : '' }}>
+                                        {{ $code }}</option>
+                                @endforeach
+                            </select>
+                            <label class="form-label" for="defaultCurrency">Default Currency</label>
+                        </div>
+                        <div class="form-floating col-4 mb-4">
                             <input type="text" class="form-control" id="TPIN" name="TPIN" placeholder=" "
                                 value="{{ $generalSettings->where('key', 'TPIN')->first()->value }}">
                             <label class="form-label" for="TPIN">Company TPIN*</label>
