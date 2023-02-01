@@ -43,6 +43,12 @@
                                         {{ $bank->balance }}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
+                                            <a type="button" id="show"
+                                                class="btn btn-sm btn-alt-success me-1 js-bs-tooltip-enabled"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Show Bank"
+                                                href="{{ route('bank.show', $bank->id) }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
                                             <a type="button" id="edit"
                                                 class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled"
                                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Bank"

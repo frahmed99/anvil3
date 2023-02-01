@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
-
+use App\Models\GeneralSettings;
 
 class CustomerController extends Controller
 {
@@ -39,6 +39,9 @@ class CustomerController extends Controller
         ];
         $request->validate($rules, $messages);
         $customer = new Customer();
+        $prefix = GeneralSettings::where('key', 'customerPrefix')->first()->value;
+        $customerId = Helper::IDGenerator(new Customer, 'customerId', $prefix, 6);
+        $customer->customerId = $customerId;
         $customer->name = $data['name'];
         $customer->company = $data['company'];
         $customer->contact = $data['contact'];
@@ -46,8 +49,6 @@ class CustomerController extends Controller
         $customer->taxId = $data['taxId'];
         $customer->billingAddress = $data['billingAddress'];
         $customer->shippingAddress = $data['shippingAddress'];
-        $customerId = Helper::IDGenerator(new Customer, 'customerId', 'CUST', 6);
-        $customer->customerId = $customerId;
         $customer->save();
         smilify('success', 'Customer Updated Successfully');
 

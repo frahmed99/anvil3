@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('transferId');
             $table->unsignedBigInteger('from_account_id');
             $table->unsignedBigInteger('to_account_id');
             $table->float('fromAmount', 15, 4);

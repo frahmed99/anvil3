@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vendor;
-use Illuminate\Http\Request;
 use App\Helpers\Helper;
+use Illuminate\Http\Request;
+use App\Models\GeneralSettings;
 
 
 class VendorController extends Controller
@@ -44,7 +45,8 @@ class VendorController extends Controller
         $vendor->taxId = $data['taxId'];
         $vendor->billingAddress = $data['billingAddress'];
         $vendor->shippingAddress = $data['shippingAddress'];
-        $vendorId = Helper::IDGenerator(new Vendor, 'vendorId', 'VEND', 6);
+        $prefix = GeneralSettings::where('key', 'vendorPrefix')->first()->value;
+        $vendorId = Helper::IDGenerator(new Vendor, 'vendorId', $prefix, 6);
         $vendor->vendorId = $vendorId;
         $vendor->save();
         smilify('success', 'Vendor Added Successfully');

@@ -55,10 +55,10 @@ class pageTablesDatatables {
 
         // Init DataTable with Buttons
         jQuery(".js-dataTable-buttons").DataTable({
-            pageLength: 5,
+            pageLength: 20,
             lengthMenu: [
-                [5, 10, 20],
-                [5, 10, 20],
+                [10, 30, 50],
+                [10, 30, 50],
             ],
             autoWidth: false,
             buttons: ["copy", "csv", "excel", "pdf", "print"],

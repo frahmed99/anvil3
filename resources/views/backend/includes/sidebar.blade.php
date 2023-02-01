@@ -148,6 +148,13 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item{{ request()->is('bank/adjustments') ? ' active' : '' }}">
+                                <a class="nav-main-link" href="{{ route('adjustment.index') }}">
+                                    <span class="nav-main-link-name">{{ __('Adjustments') }}</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item"{{ request()->is('income/*') ? ' open' : '' }}">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
@@ -368,15 +375,9 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="{{ route('tax.index') }}">
+                        <a class="nav-main-link" href="{{ route('general.index') }}">
                             <i class="nav-main-link-icon fa fa-gears"></i>
-                            <span class="nav-main-link-name">Application Settings</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_styles.html">
-                            <i class="nav-main-link-icon fa fa-gear"></i>
-                            <span class="nav-main-link-name">Company Settings</span>
+                            <span class="nav-main-link-name">Settings</span>
                         </a>
                     </li>
                 </ul>

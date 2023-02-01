@@ -8,6 +8,7 @@ use App\Helpers\Helper;
 use App\Models\Transfer;
 
 use Illuminate\Http\Request;
+use App\Models\GeneralSettings;
 use AmrShawky\LaravelCurrency\Facade\Currency;
 
 class TransferController extends Controller
@@ -40,6 +41,9 @@ class TransferController extends Controller
 
         // Create a new Transfer object and set its properties
         $transfer = new Transfer();
+        $prefix = GeneralSettings::where('key', 'transferPrefix')->first()->value;
+        $transferId = Helper::IDGenerator(new Transfer, 'transferId', $prefix, 6);
+        $transfer->transferId = $transferId;
         $transfer->from_account_id = $request->fromAccount;
         $transfer->to_account_id = $request->toAccount;
         $transfer->fromAmount = $request->fromAmount;
@@ -111,6 +115,11 @@ class TransferController extends Controller
 
         //create reversed transfer
         $reversedTransfer = new Transfer();
+
+        $prefix = GeneralSettings::where('key', 'reversalPrefix')->first()->value;
+        $transferId = Helper::IDGenerator(new Transfer, 'transferId', $prefix, 6);
+        $reversedTransfer->transferId = $transferId;
+
         $reversedTransfer->from_account_id = $originalTransfer->to_account_id;
         $reversedTransfer->to_account_id = $originalTransfer->from_account_id;
         $reversedTransfer->rate = $originalTransfer->rate;

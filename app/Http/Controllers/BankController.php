@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Bank;
+use App\Models\Transfer;
+use App\Models\Adjustment;
 use Illuminate\Http\Request;
 use AmrShawky\LaravelCurrency\Facade\Currency;
 
@@ -78,6 +80,20 @@ class BankController extends Controller
         $bank->save();
         smilify('success', 'Bank Updated Successfully');
         return redirect()->route('bank.index');
+    }
+
+    public function show($id)
+    {
+        $bank = Bank::find($id);
+        $adjustments = Adjustment::where('bank_id', $id)->get();
+        $transfers = Transfer::where('from_account_id', $id)
+            ->orWhere('to_account_id', $id)->get();
+
+        return view('backend.pages.banks.show', [
+            'bank' => $bank,
+            'adjustments' => $adjustments,
+            'transfers' => $transfers,
+        ]);
     }
 
     public function destroy($id)

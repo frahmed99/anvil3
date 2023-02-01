@@ -16,6 +16,15 @@
                         <div class="block-content p-3">
                             <ul class="nav nav-pills flex-column">
                                 <li class="nav-item">
+                                    <a class="nav-link{{ request()->is('setting/general-settings/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                        href="{{ route('general.index') }}">
+                                        <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Company Settings</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <hr class="my-1">
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center justify-content-between {{ request()->is('settings/tax/*') ? ' active' : '' }}"
                                         href="{{ route('tax.index') }}">
                                         <span><i class="fa fa-fw fa-inbox opacity-50 me-1"></i>Taxes</span>
@@ -37,25 +46,6 @@
                                     <a class="nav-link{{ request()->is('settings/unit/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
                                         href="{{ route('unit.index') }}">
                                         <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Unit</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <hr class="my-1">
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link{{ request()->is('setting/general-settings/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
-                                        href="{{ route('general.index') }}">
-                                        <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Company Settings</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <hr class="my-1">
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link{{ request()->is('setting/currency/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
-                                        href="{{ route('currency.index') }}">
-                                        <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Currency
-                                            Settings</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">

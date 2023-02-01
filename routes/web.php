@@ -12,6 +12,7 @@ use App\Http\Controllers\TransferController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\AdjustmentController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\Settings\TaxController;
 use App\Http\Controllers\User\ProfileController;
@@ -165,6 +166,16 @@ Route::middleware([
         Route::get('/destroy/{id}', [TransferController::class, 'destroy'])->name('transfer.destroy');
         Route::get('/reversal/{id}', [TransferController::class, 'reversal'])->name('transfer.reversal');
     });
+    Route::prefix('bank/adjustments')->group(function () {
+        Route::get('/index', [AdjustmentController::class, 'index'])->name('adjustment.index');
+        Route::get('/create', [AdjustmentController::class, 'create'])->name('adjustment.create');
+        Route::post('/store', [AdjustmentController::class, 'store'])->name('adjustment.store');
+        Route::get('/show/{id}', [AdjustmentController::class, 'show'])->name('adjustment.show');
+        Route::get('/edit/{id}', [AdjustmentController::class, 'edit'])->name('adjustment.edit');
+        Route::post('/update/{id}', [AdjustmentController::class, 'update'])->name('adjustment.update');
+        Route::get('/destroy/{id}', [AdjustmentController::class, 'destroy'])->name('adjustment.destroy');
+    });
+
     Route::prefix('income/quotations')->group(function () {
         Route::get('/index', [QuotationController::class, 'index'])->name('quotation.index');
         Route::get('/create', [QuotationController::class, 'create'])->name('quotation.create');

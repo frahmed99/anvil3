@@ -92,9 +92,9 @@ class Category extends Component
         $this->dispatchBrowserEvent('deleteConfirmation');
     }
 
-    public function deleteTax()
+    public function deleteCategory()
     {
-        $tax = CategoryModel::where('id', $this->deleteId)->delete();
+        $category = CategoryModel::where('id', $this->deleteId)->delete();
         $this->dispatchBrowserEvent('deleteConfirmed');
     }
 

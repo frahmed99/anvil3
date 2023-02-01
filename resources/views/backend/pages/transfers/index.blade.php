@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
+                                <th>Transfer ID</th>
                                 <th class="text-center fw-bold d-none d-sm-table-cell">From Account</th>
                                 <th class="text-center fw-bold d-none d-sm-table-cell"></th>
                                 <th class="text-center fw-bold d-none d-sm-table-cell">To Account</th>
@@ -40,6 +41,7 @@
                                 <tr>
                                     <td class="fw-semibold">{{ \Carbon\Carbon::parse($transfer->date)->format('d-m-Y') }}
                                     </td>
+                                    <td>{{ $transfer->transferId }}</td>
                                     <td class="text-center fw-semibold"> {{ $transfer->fromAccount->accountName }}</td>
                                     <td class="text-center"><button type="button" class="btn btn-success">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
