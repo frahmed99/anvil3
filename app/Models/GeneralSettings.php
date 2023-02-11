@@ -15,6 +15,8 @@ class GeneralSettings extends Model
      * @var array
      */
     protected $fillable = [
-        'key', 'displayName', 'value',
+        'key',
+        'displayName',
+        'value',
     ];
 }

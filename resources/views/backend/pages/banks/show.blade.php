@@ -12,8 +12,8 @@
     <div class="content">
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
             <a class="breadcrumb-item" href="{{ '/dashboard' }}">{{ __('Dashboard') }}</a>
-            <a class="breadcrumb-item" href="{{ '/bank/index' }}">{{ __('Banks') }}</a>
-            <span class="breadcrumb-item active">{{ $bank->name }}</span>
+            <a class="breadcrumb-item" href="{{ '/bank/accounts/index' }}">{{ __('Banks') }}</a>
+            <span class="breadcrumb-item active">{{ $bank->accountName }}</span>
         </nav>
         <h2 class="content-heading">Overview</h2>
         <div class="row g-sm">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="py-3 text-center">
                             <div class="fs-2 fw-bold mb-0 text-white">35</div>
-                            <div class="fs-sm fw-semibold text-uppercase text-white-75">Credit Amount</div>
+                            <div class="fs-sm fw-semibold text-uppercase text-white-75">Total Transactions This Month</div>
                         </div>
                     </div>
                 </a>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="py-3 text-center">
                             <div class="fs-2 fw-bold mb-0 text-white">15</div>
-                            <div class="fs-sm fw-semibold text-uppercase text-white-75">Debit Amount</div>
+                            <div class="fs-sm fw-semibold text-uppercase text-white-75">Total Transactions This Week</div>
                         </div>
                     </div>
                 </a>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="py-3 text-center">
-                            <div class="fs-2 fw-bold mb-0 text-white">5.6%</div>
+                            <div class="fs-2 fw-bold mb-0 text-white">{{ $bank->currencyCode }} {{ $bank->balance }}</div>
                             <div class="fs-sm fw-semibold text-uppercase text-white-75">Available Balance</div>
                         </div>
                     </div>

@@ -105,7 +105,8 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_styles.html">
+                        <a class="nav-main-link{{ request()->is('productsServices') ? ' active' : '' }}""
+                            href="{{ route('productsServices.index') }}">
                             <i class="nav-main-link-icon fa fa-house-user"></i>
                             <span class="nav-main-link-name">{{ __('Product & Services') }}</span>
                         </a>
@@ -156,14 +157,14 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-main-item"{{ request()->is('income/*') ? ' open' : '' }}">
+                    <li class="nav-main-item{{ request()->is('income/*') ? ' open' : '' }}">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                             aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fa fa-grip-vertical"></i>
                             <span class="nav-main-link-name">Income</span>
                         </a>
                         <ul class="nav-main-submenu">
-                            <li class="nav-main-item{{ request()->is('bank/accounts') ? ' active' : '' }}">
+                            <li class="nav-main-item{{ request()->is('income/quotations') ? ' active' : '' }}">
                                 <a class="nav-main-link" href="{{ route('quotation.index') }}">
                                     <span class="nav-main-link-name">Quotations</span>
                                 </a>
@@ -219,15 +220,16 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-main-item">
+                    <li class="nav-main-item{{ request()->is('double-entry/*') ? ' open' : '' }}">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                             aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fa fa-grip-vertical"></i>
                             <span class="nav-main-link-name">Double Entry</span>
                         </a>
                         <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_blocks_styles.html">
+                            <li
+                                class="nav-main-item{{ request()->is('double-entry/chart-of-accounts') ? ' active' : '' }}">
+                                <a class="nav-main-link" href="{{ route('chartofaccounts.index') }}">
                                     <span class="nav-main-link-name">Chart Of Accounts</span>
                                 </a>
                             </li>

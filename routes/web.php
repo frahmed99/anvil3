@@ -17,6 +17,8 @@ use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\Settings\TaxController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Settings\UnitController;
+use App\Http\Controllers\ChartOfAccountsController;
+use App\Http\Controllers\ProductServicesController;
 use App\Http\Controllers\Settings\CategoryController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Settings\GeneralSettingsController;
@@ -184,5 +186,22 @@ Route::middleware([
         Route::get('/edit/{id}', [QuotationController::class, 'edit'])->name('quotation.edit');
         Route::post('/update/{id}', [QuotationController::class, 'update'])->name('quotation.update');
         Route::get('/destroy/{id}', [QuotationController::class, 'destroy'])->name('quotation.destroy');
+    });
+
+    Route::prefix('productsServices')->group(function () {
+        Route::get('/index', [ProductServicesController::class, 'index'])->name('productsServices.index');
+        Route::get('/create', [ProductServicesController::class, 'create'])->name('productsServices.create');
+        Route::post('/store', [ProductServicesController::class, 'store'])->name('productsServices.store');
+        Route::get('/show/{id}', [ProductServicesController::class, 'show'])->name('productsServices.show');
+        Route::get('/edit/{id}', [ProductServicesController::class, 'edit'])->name('productsServices.edit');
+        Route::post('/update/{id}', [ProductServicesController::class, 'update'])->name('productsServices.update');
+        Route::get('/destroy/{id}', [ProductServicesController::class, 'destroy'])->name('productsServices.destroy');
+    });
+    Route::prefix('double-entry/Chart-Of-Accounts')->group(function () {
+        Route::get('/index', [ChartOfAccountsController::class, 'index'])->name('chartofaccounts.index');
+        Route::post('/store', [ChartOfAccountsController::class, 'store'])->name('chartofaccounts.store');
+        Route::post('/update', [ChartOfAccountsController::class, 'update'])->name('chartofaccounts.update');
+        Route::get('/destroy/{id}', [ChartOfAccountsController::class, 'destroy'])->name('chartofaccounts.destroy');
+        Route::post('/fetch', [ChartOfAccountsController::class, 'fetchChartOfAccounts'])->name('chartofaccounts.fetch');
     });
 });

@@ -14,7 +14,7 @@
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
             <a class="breadcrumb-item" href="{{ '/dashboard' }}">{{ __('Dashboard') }}</a>
             <a class="breadcrumb-item" href="{{ '/bank/accounts/index' }}">{{ __('Banks') }}</a>
-            <span class="breadcrumb-item active">{{ __('Add Vendor') }}</span>
+            <span class="breadcrumb-item active">{{ __('Add Bank') }}</span>
         </nav>
         <div class="block block-themed block-rounded">
             <div class="block-content">

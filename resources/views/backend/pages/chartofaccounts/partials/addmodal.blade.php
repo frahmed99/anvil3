@@ -1,0 +1,83 @@
+<div class="modal fade" id="addChartOfAccounts" tabindex="-1" aria-labelledby="addChartOfAccounts" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="block block-rounded shadow-none mb-0 block-themed">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">Add Account</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <form action="{{ route('chartofaccounts.store') }}" method="post">
+                    <div class="block-content fs-sm">
+                        <div class="alert alert-danger print-error-msg" style="display:none">
+                            <ul></ul>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="name" name="name">
+                            <label class="form-label" for="name">Name*</label>
+                            <div class="invalid-feedback">
+                                @error('name')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control  @error('code') is-invalid @enderror"
+                                id="code" name="code">
+                            <label class="form-label" for="code">Code</label>
+                            <div class="invalid-feedback">
+                                @error('code')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <select class="form-select @error('code') is-invalid @enderror"
+                                id="chart_of_accounts_subtypes_id" name="chart_of_accounts_subtypes_id"
+                                aria-label="Floating label select example">
+                                <option selected="">Select an option</option>
+                                @foreach ($types as $type)
+                                    <optgroup label="{{ $type->name }}">
+                                        {{ count($type->subtypes) }}
+                                        @foreach ($type->subtypes as $subtype)
+                                            <option value="{{ $subtype->id }}">{{ $subtype->name }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                @endforeach
+                            </select>
+                            <div class="invalid-feedback">
+                                @error('chart_of_accounts_subtypes_id')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+                            <label class="form-label" for="chart_of_accounts_subtypes_id">Account Type*</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description"
+                                style="height: 100px" placeholder="Leave a description here"></textarea>
+                            <label class="form-label" for="description">Description</label>
+                            @error('description')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="block-content block-content-full block-content-sm text-end border-top">
+                        <button type="button" class="btn btn-alt-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success btn-submit btn-sm">
+                            Add
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

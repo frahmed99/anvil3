@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,9 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
-        // $this->call(RolePermissionSeeder::class);
-        // $this->call(CategorySeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(RolePermissionSeeder::class);
         $this->call(GeneralSettingsSeeder::class);
+        $this->call(TaxSeeder::class);
+        $this->call(UnitSeeder::class);
+        $this->call(ChartOfAccountsTypesSeeder::class);
+        $this->call(ChartOfAccountsSubtypesSeeder::class);
+        $this->call(ChartOfAccountsSeeder::class);
     }
 }

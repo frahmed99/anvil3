@@ -19,7 +19,8 @@
         "mckenziearts/laravel-notify": "^2.3",
         "owen-it/laravel-auditing": "^13.0",
         "spatie/laravel-permission": "^5.7",
-        "tonystore/livewire-notification": "^1.0"
+        "tonystore/livewire-notification": "^1.0",
+        "yajra/laravel-datatables": "9.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
