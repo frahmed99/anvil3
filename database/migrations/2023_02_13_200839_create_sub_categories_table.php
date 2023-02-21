@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chart_of_accounts_subtypes', function (Blueprint $table) {
+        Schema::create('sub_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->default();
-            $table->unsignedBigInteger('chart_of_accounts_types_id');
+            $table->unsignedBigInteger('category_id')->index('product_sub_category_category_id_foreign');
+            $table->foreign(['category_id'])->references(['id'])->on('categories')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
-            $table->foreign('chart_of_accounts_types_id')->references('id')->on('chart_of_accounts_types')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chart_of_accounts_subtypes');
+        Schema::table('sub_categories', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+        });
+        Schema::dropIfExists('sub_categories');
     }
 };

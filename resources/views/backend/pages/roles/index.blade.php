@@ -21,7 +21,7 @@
                 </h2>
                 <div class="block-content block-content-full">
                     <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-                    <table class="table table-bordered table-vcenter">
+                    <table class="table table-sm table-vcenter table-bordered table-vcenter">
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 15%;">Role</th>

@@ -11,7 +11,15 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'type',
         'description',
     ];
+
+    public function subcategories()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
+    public function productServices()
+    {
+        return $this->belongsToMany(Product_Services::class);
+    }
 }

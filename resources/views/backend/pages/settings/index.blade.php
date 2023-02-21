@@ -43,6 +43,15 @@
                                     <hr class="my-1">
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link{{ request()->is('settings/subcategory/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
+                                        href="{{ route('subcategory.index') }}">
+                                        <span><i class="fa fa-fw fa-star opacity-50 me-1"></i>Sub-Category</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <hr class="my-1">
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link{{ request()->is('settings/unit/*') ? ' active' : '' }} d-flex align-items-center justify-content-between"
                                         href="{{ route('unit.index') }}">
                                         <span><i class="fa fa-fw fa-paper-plane opacity-50 me-1"></i>Unit</span>

@@ -32,25 +32,6 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                {{-- <div class="form-floating mb-4">
-                                    <input type="text" class="form-control" wire:model="type" id="type"
-                                        name="type" placeholder=" ">
-                                    <label class="form-label" for="type">Category Type</label>
-                                    @error('type')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div> --}}
-                                <div class="form-floating mb-4">
-                                    <select class="form-select" wire:model="type" id="type" name="type"
-                                        placeholder=" ">
-                                        <option selected>Income Accounts</option>
-                                        <option value="1">Expense Accounts</option>
-                                        <option value="2">Equity Accounts</option>
-                                        <option value="3">Liability Accounts</option>
-                                        <option value="3">Asset Accounts</option>
-                                    </select>
-                                    <label class="form-label" for="example-select-floating">Category</label>
-                                </div>
                             </div>
                         </div>
                         <div class="block-content block-content-full block-content-sm text-end border-top">
@@ -99,14 +80,6 @@
                                         name="description" placeholder=" "></textarea>
                                     <label class="form-label" for="description">Description</label>
                                     @error('description')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="form-floating mb-4">
-                                    <input type="text" class="form-control" wire:model="type" id="type"
-                                        name="type" placeholder=" ">
-                                    <label class="form-label" for="type">Category Type</label>
-                                    @error('type')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

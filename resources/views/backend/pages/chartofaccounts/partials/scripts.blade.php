@@ -16,59 +16,6 @@
     });
 </script>
 
-{{-- <script>
-    let select = document.getElementById("account_type");
-
-    select.addEventListener("change", function() {
-        let selectedOption = this.options[this.selectedIndex];
-        let selectedValue = selectedOption.value;
-        console.log("Selected subtype ID: " + selectedValue);
-    });
-</script> --}}
-
-{{-- <script>
-    < script >
-        $(document).ready(function() {
-            $("#account_type").change(function() {
-                var selectedOption = $("#account_type option:selected");
-                var selectedTypeId = selectedOption.parent().attr("label");
-                $("#selected_type_id").val(selectedTypeId);
-            });
-        }); <
-    />
-</script> --}}
-
-{{-- <script>
-    $(document).ready(function() {
-        $('#addChartOfAccounts').on('submit', function(event) {
-            event.preventDefault();
-            var form = $(this);
-
-            $.ajax({
-                type: form.attr('method'),
-                url: form.attr('action'),
-                data: form.serialize(),
-                success: function(data) {
-                    $('#addChartOfAccounts').modal('hide');
-                    location.reload();
-                },
-                error: function(xhr) {
-                    var errors = xhr.responseJSON.errors;
-                    console.log(errors);
-                    $('.form-floating').removeClass('is-invalid');
-                    $('.invalid-feedback').remove();
-
-                    $.each(errors, function(field, error) {
-                        $('#' + field).addClass('is-invalid');
-                        $('#' + field).after('<div class="invalid-feedback">' +
-                            error[0] + '</div>');
-                    });
-                }
-            });
-        });
-    });
-</script> --}}
-
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -206,8 +153,6 @@
         });
     });
 </script>
-
-
 <script>
     $('#editModalChartOfAccounts').on('hidden.bs.modal', function(e) {
         $("#msgEditChartOfAccounts").html("");

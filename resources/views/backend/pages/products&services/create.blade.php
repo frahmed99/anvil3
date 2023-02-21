@@ -3,12 +3,11 @@
     Add Product Or Service - Anvil Accounts
 @endsection
 @section('css')
-    @include('backend.pages.banks.partials.styles')
+    @include('backend.pages.products&services.partials.styles')
 @stop
 @section('js')
-    @include('backend.pages.banks.partials.scripts')
+    @include('backend.pages.products&services.partials.scripts')
 @stop
-
 @section('content')
     <div class="content">
         <nav class="breadcrumb push bg-body-extra-light rounded-pill px-4 py-2">
@@ -19,7 +18,7 @@
         <div class="block block-themed block-rounded">
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
-                    <span>{{ __('Add Bank') }}</span>
+                    <span>{{ __('Add Product') }}</span>
                 </h2>
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
@@ -28,7 +27,10 @@
                         </h3>
                     </div>
                     <div class="block-content">
-                        <form role="form" action="{{ route('productsServices.store') }}" method="post">
+                        @include('backend.pages.products&services.partials.addCategoryModal')
+                        @include('backend.pages.products&services.partials.addSubCategoryModal')
+                        @include('backend.pages.products&services.partials.addTaxModal')
+                        <form role="form" action="{{ route('productsServices.store') }}" method="post" id="productFomr">
                             @csrf
                             <div class="row items-push">
                                 <div class="col-lg-3">
@@ -38,67 +40,89 @@
                                 <div class="col-lg-7 offset-lg-1">
                                     <div class="form-group row">
                                         <div class="form-floating col-6 mb-4">
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                placeholder=" " value="{{ old('name') }}">
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                                id="name" name="name" placeholder=" " value="{{ old('name') }}">
                                             <label class="form-label" for="name">Product Name*</label>
-                                            <span style="color:red">
-                                                @error('name')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="form-floating col-6 mb-4">
-                                            <input type="text" class="form-control" id="sku" name="sku"
-                                                placeholder=" " value="{{ old('sku') }}">
+                                            <input type="text" class="form-control @error('sku') is-invalid @enderror"
+                                                id="sku" name="sku" placeholder=" " value="{{ old('sku') }}">
                                             <label class="form-label" for="sku">SKU</label>
-                                            <span style="color:red">
-                                                @error('sku')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
+                                            @error('sku')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="form-floating col-4 mb-4">
-                                            <input type="text" class="form-control" id="salePrice" name="salePrice"
-                                                placeholder=" " value="{{ old('salePrice') }}">
-                                            <label class="form-label" for="salePrice">Sale Price</label>
-                                            <span style="color:red">
-                                                @error('salePrice')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
+                                        <div class="form-floating col-3 mb-4">
+                                            <input type="text"
+                                                class="form-control @error('salePrice') is-invalid @enderror" id="salePrice"
+                                                name="salePrice" placeholder=" " value="{{ old('salePrice') }}">
+                                            <label class="form-label" for="salePrice">Sale Price
+                                                ({{ $defaultCurrency }})</label>
+                                            @error('salePrice')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-                                        <div class="form-floating col-4 mb-4">
-                                            <input type="text" class="form-control" id="purchasePrice"
-                                                name="purchasePrice" placeholder=" " value="{{ old('purchasePrice') }}">
-                                            <label class="form-label" for="purchasePrice">Purchase Price</label>
-                                            <span style="color:red">
-                                                @error('purchasePrice')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
+                                        <div class="form-floating col-3 mb-4">
+                                            <input type="text"
+                                                class="form-control @error('purchasePrice') is-invalid @enderror"
+                                                id="purchasePrice" name="purchasePrice" placeholder=" "
+                                                value="{{ old('purchasePrice') }}">
+                                            <label class="form-label" for="purchasePrice">Purchase Price
+                                                ({{ $defaultCurrency }})</label>
+                                            @error('purchasePrice')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-                                        <div class="form-floating col-4 mb-4">
-                                            <input type="text" class="form-control" id="quantity" name="quantity"
-                                                placeholder=" " value="{{ old('quantity') }}">
+                                        <div class="form-floating col-3 mb-4">
+                                            <input type="text"
+                                                class="form-control @error('quantity') is-invalid @enderror" id="quantity"
+                                                name="quantity" placeholder=" " value="{{ old('quantity') }}">
                                             <label class="form-label" for="quantity">Quantity</label>
-                                            <span style="color:red">
-                                                @error('quantity')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
+                                            @error('quantity')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-floating col-3 mb-4">
+                                            <select class="form-select" id="unit_id" name="unit_id"
+                                                aria-label="Floating label select example">
+                                                <option selected value="">Select an unit</option>
+                                                @foreach ($units as $unit)
+                                                    <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <label class="form-label" for="unit_id">Unit</label>
+                                            @error('unit_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="form-floating col-8 mb-4">
-                                            <textarea class="form-control" id="description" name="description" style="height: 100px" placeholder=" ">{{ old('description') }}</textarea>
+                                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                                                style="height: 100px" placeholder=" ">{{ old('description') }}</textarea>
                                             <label class="form-label" for="description">Description</label>
-                                            <span style="color:red">
-                                                @error('description')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
+                                            @error('description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="col-4 mb-4">
                                             <label class="form-label">Type</label>
@@ -117,89 +141,112 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-4 mb-4">
-                                            <label for="tax_id">Tax</label>
-                                            <select class="js-select2 form-select" id="tax_id" name="tax_id"
-                                                style="width: 100%;" data-placeholder="Choose one or many.." multiple>
-                                                <option></option>
-                                                <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                @foreach ($taxes as $tax)
-                                                    <option value="{{ $tax->id }}">{{ $tax->name }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="form-floating col-4 mb-4">
+                                            <div class="input-group">
+                                                <select class="form-select" id="category_id" name="category_id"
+                                                    aria-label="Floating label select category_id">
+                                                    <option selected="">Select a Category</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}">
+                                                            {{ $category->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#addCategoryModal">Add</button>
+                                                @error('description')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-4 mb-4">
-                                            <label for="unit_id">Unit</label>
-                                            <select class="js-select2 form-select" id="unit_id" name="unit_id"
-                                                style="width: 100%;" data-placeholder="Choose one..">
-                                                <option></option>
-                                                @foreach ($units as $unit)
-                                                    <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="form-floating col-4 mb-4">
+                                            <div class="input-group">
+                                                <select class="form-select" id="subcategory_id" name="subcategory_id"
+                                                    aria-label="Floating label select subcategory_id">
+                                                    <option selected="">Select a Sub-Category</option>
+                                                    @foreach ($subcategories as $subcategory)
+                                                        <option value="{{ $subcategory->id }}"
+                                                            data-category="{{ $subcategory->category_id }}">
+                                                            {{ $subcategory->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#addSubCategoryModal">Add</button>
+                                                @error('description')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-4 mb-4">
-                                            <label for="category_id">Category</label>
-                                            <select class="js-select2 form-select" id="category_id" name="category_id"
-                                                style="width: 100%;" data-placeholder="Choose one..">
-                                                <option></option>
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="form-floating col-4 mb-4">
+                                            <div class="input-group">
+                                                <select class="js-select2 form-select" id="taxes" name="taxes[]"
+                                                    data-placeholder="Select Taxes" multiple>
+                                                    @foreach ($taxes as $tax)
+                                                        <option value="{{ $tax->id }}">{{ $tax->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#addTaxModal">Add</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-6 mb-4">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" value=""
-                                                    id="sellthis-checkbox" name="sellthis-checkbox" checked="">
-                                                <label class="form-check-label" for="sellthis-checkbox">Sell This</label>
+                                                    id="sellThisCheckbox" name="sellThisCheckbox">
+                                                <label class="form-check-label" for="sellThisCheckbox">Sell This</label>
                                             </div>
-                                            <select class="js-select2 form-select" id="incomeAccount"
-                                                name="incomeAccount" style="width: 100%;"
-                                                data-placeholder="Choose one..">
-                                                <option></option>
-                                                <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                <option value="1">HTML</option>
-                                                <option value="2">CSS</option>
-                                                <option value="3">JavaScript</option>
-                                                <option value="4">PHP</option>
-                                                <option value="5">MySQL</option>
-                                                <option value="6">Ruby</option>
-                                                <option value="7">Angular</option>
-                                                <option value="8">React</option>
-                                                <option value="9">Vue.js</option>
-                                            </select>
+                                            <div class="form-floating mb-4" id="sellThisSelect">
+                                                <select name="income_account_id" id="income_account_id"
+                                                    class="form-control @error('name') is-invalid @enderror">
+                                                    <option value="">Select an Income Account</option>
+                                                    @foreach ($incomeAccounts as $account)
+                                                        <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label class="form-label" for="income_account_id">Income Account</label>
+                                            </div>
+                                            <p>Allow this product or service to be added to Invoices.</p>
+                                            @error('description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="col-6 mb-4">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="buythis-checkbox" name="buythis-checkbox" checked="">
-                                                <label class="form-check-label" for="buythis-checkbox">Buy This</label>
+                                                <input class="form-check-input" type="checkbox" id="buyThisCheckbox"
+                                                    name="buyThisCheckbox">
+                                                <label class="form-check-label" for="buyThisCheckbox">Buy This</label>
                                             </div>
-                                            <select class="js-select2 form-select" id="expenseAccount"
-                                                name="expenseAccount" style="width: 100%;"
-                                                data-placeholder="Choose one..">
-                                                <option></option>
-                                                <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                <option value="1">HTML</option>
-                                                <option value="2">CSS</option>
-                                                <option value="3">JavaScript</option>
-                                                <option value="4">PHP</option>
-                                                <option value="5">MySQL</option>
-                                                <option value="6">Ruby</option>
-                                                <option value="7">Angular</option>
-                                                <option value="8">React</option>
-                                                <option value="9">Vue.js</option>
-                                            </select>
+                                            <div class="form-floating mb-4" id="buyThisSelect">
+                                                <select name="expense_account_id" id="expense_account_id"
+                                                    class="form-control @error('name') is-invalid @enderror">
+                                                    <option value="">Select an Expense Account</option>
+                                                    @foreach ($expenseAccounts as $account)
+                                                        <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label class="form-label" for="expense_account_id">Expense Account</label>
+                                            </div>
+                                            <p>Allow this product or service to be added to Bills.</p>
+                                            @error('description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="text-right mb-4">
                                         <a href="{{ '/productsServices/index' }}" type="button"
                                             class="btn btn-alt-danger">{{ __('Cancel') }}
                                         </a>
-                                        <span></span>
                                         <button type="submit" class="btn btn-success">Save</button>
                                     </div>
                                 </div>
@@ -209,4 +256,5 @@
                 </div>
             </div>
         </div>
-    @stop
+    </div>
+@stop

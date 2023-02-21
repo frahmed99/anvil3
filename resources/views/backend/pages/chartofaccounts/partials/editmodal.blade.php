@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label for="editDescription">Description</label>
-                            <textarea class="form-control" id="editDescription" placeholder="Enter description"></textarea>
+                            <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Enter description">{{ old('editDescription') }}</textarea>
                         </div>
                         <div class="block-content block-content-full block-content-sm text-end border-top">
                             <button type="button" class="btn btn-alt-danger" data-bs-dismiss="modal">

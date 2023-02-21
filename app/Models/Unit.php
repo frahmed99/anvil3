@@ -11,4 +11,8 @@ class Unit extends Model
     protected $fillable = [
         'name',
     ];
+    public function productServices()
+    {
+        return $this->belongsToMany(Product_Services::class);
+    }
 }

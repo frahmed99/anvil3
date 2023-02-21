@@ -19,7 +19,6 @@
                 <thead>
                     <tr>
                         <th class="text-center">Category Name</th>
-                        <th class="text-center">Category Type</th>
                         <th class="text-center">Description</th>
                         <th style="width: 15%;" class="text-center">Actions</th>
                     </tr>
@@ -28,7 +27,6 @@
                     <tbody>
                         <tr>
                             <td class="fw-semibold">{{ $category->name }}</td>
-                            <td>{{ $category->type }}</td>
                             <td>{{ $category->description }}</td>
                             <td class="text-center">
                                 <button type="button" wire:click="edit({{ $category->id }})"

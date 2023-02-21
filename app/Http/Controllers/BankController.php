@@ -66,7 +66,7 @@ class BankController extends Controller
         $request->validate([
             'accountName' => 'required|max:255',
             'bankName' => 'nullable|required|max:255',
-            'accountNumber' => 'nullable|required|max:255',
+            'accountNumber' => 'nullable|max:255',
             'balance' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'contact' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
         ]);
@@ -86,13 +86,53 @@ class BankController extends Controller
     {
         $bank = Bank::find($id);
         $adjustments = Adjustment::where('bank_id', $id)->get();
-        $transfers = Transfer::where('from_account_id', $id)
+        $transfers = Transfer::orderBy('date', 'DESC')->where('from_account_id', $id)
             ->orWhere('to_account_id', $id)->get();
+
+        $totalTransactions = $transfers->count() + $adjustments->count();
+
+        $creditAmount = 0;
+        $debitAmount = 0;
+        foreach ($transfers as $transfer) {
+            if ($transfer->from_account_id == $bank->id) {
+                $debitAmount += $transfer->fromAmount;
+            } else {
+                $creditAmount += $transfer->toAmount;
+            }
+        }
+        foreach ($adjustments as $adjustment) {
+            if ($adjustment->type == 'Credit') {
+                $creditAmount += $adjustment->amount;
+            } else {
+                $debitAmount += $adjustment->amount;
+            }
+        }
+
+        $totalTransactionsThisMonth = $transfers->whereBetween('date', [
+            now()->startOfMonth(),
+            now()->endOfMonth()
+        ])->count() + $adjustments->whereBetween('created_at', [
+            now()->startOfMonth(),
+            now()->endOfMonth()
+        ])->count();
+
+        $totalTransactionsThisWeek = $transfers->whereBetween('date', [
+            now()->startOfWeek(),
+            now()->endOfWeek()
+        ])->count() + $adjustments->whereBetween('created_at', [
+            now()->startOfWeek(),
+            now()->endOfWeek()
+        ])->count();
 
         return view('backend.pages.banks.show', [
             'bank' => $bank,
             'adjustments' => $adjustments,
             'transfers' => $transfers,
+            'totalTransactions' => $totalTransactions,
+            'creditAmount' => $creditAmount,
+            'debitAmount' => $debitAmount,
+            'totalTransactionsThisMonth' => $totalTransactionsThisMonth,
+            'totalTransactionsThisWeek' => $totalTransactionsThisWeek,
         ]);
     }
 

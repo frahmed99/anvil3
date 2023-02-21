@@ -15,7 +15,7 @@ class Category extends Component
 
     protected $listeners = ['deleteConfirmed' => 'deleteCategory'];
 
-    public $name, $type, $description, $categoryId, $deleteId;
+    public $name, $description, $categoryId, $deleteId;
 
     public function render()
     {
@@ -29,7 +29,6 @@ class Category extends Component
     {
         return [
             'name' => 'required|max:100|unique:categories',
-            'type' => 'required',
             'description' => 'max:250',
         ];
     }
@@ -37,7 +36,6 @@ class Category extends Component
     protected $messages = [
         'name.required' => 'The Category Name Is Required',
         'name.unique' => 'Category Already Exists',
-        'type.required' => 'Category Type Is Required',
     ];
 
     public function updated($fields)
@@ -65,7 +63,6 @@ class Category extends Component
         if ($category) {
             $this->categoryId = $category->id;
             $this->name = $category->name;
-            $this->type = $category->type;
             $this->description = $category->description;
         } else {
             return redirect()->to('/categories');
@@ -78,7 +75,6 @@ class Category extends Component
 
         CategoryModel::where('id', $this->categoryId)->update([
             'name' => $validatedData['name'],
-            'type' => $validatedData['type'],
             'description' => $validatedData['description'],
         ]);
         session()->flash('message', 'Category Updated Successfully');
@@ -106,7 +102,6 @@ class Category extends Component
     public function resetForm()
     {
         $this->name = null;
-        $this->type = null;
         $this->description = null;
         $this->resetErrorBag();
     }

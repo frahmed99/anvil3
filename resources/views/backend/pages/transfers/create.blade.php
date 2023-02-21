@@ -42,6 +42,7 @@
                                                 aria-label="Floating label select example" value="{{ old('fromAccount') }}"
                                                 onchange="getFromAccountRate()">
                                                 @foreach ($banks as $bank)
+                                                    <option value="" selected="">Select a Bank</option>
                                                     <option value="{{ $bank->id }}"
                                                         data-currency-code="{{ $bank->currencyCode }}">
                                                         {{ $bank->accountName }}
@@ -69,6 +70,7 @@
                                             <select class="form-select" id="toAccount" name="toAccount"
                                                 aria-label="Floating label select example" value="{{ old('toAccount') }}"
                                                 onchange="getToAccountRate()">
+                                                <option value="" selected="">Select a Bank</option>
                                                 @foreach ($banks as $bank)
                                                     <option value="{{ $bank->id }}"
                                                         data-currency-code="{{ $bank->currencyCode }}">

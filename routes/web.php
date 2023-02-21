@@ -14,6 +14,7 @@ use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\AdjustmentController;
 use App\Http\Controllers\User\RolesController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\Settings\TaxController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Settings\UnitController;
@@ -127,6 +128,7 @@ Route::middleware([
     Route::prefix('settings/category')->group(function () {
         Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
     });
+
     //Unit Management Using Livewire
     Route::prefix('settings/unit')->group(function () {
         Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
@@ -192,9 +194,12 @@ Route::middleware([
         Route::get('/index', [ProductServicesController::class, 'index'])->name('productsServices.index');
         Route::get('/create', [ProductServicesController::class, 'create'])->name('productsServices.create');
         Route::post('/store', [ProductServicesController::class, 'store'])->name('productsServices.store');
+        Route::post('/taxstore', [ProductServicesController::class, 'taxstore'])->name('pnstax.store');
+        Route::post('/categorystore', [ProductServicesController::class, 'categorystore'])->name('pnsCategory.store');
+        Route::post('/subcategorystore', [ProductServicesController::class, 'subcategorystore'])->name('pnsSubCategory.store');
         Route::get('/show/{id}', [ProductServicesController::class, 'show'])->name('productsServices.show');
         Route::get('/edit/{id}', [ProductServicesController::class, 'edit'])->name('productsServices.edit');
-        Route::post('/update/{id}', [ProductServicesController::class, 'update'])->name('productsServices.update');
+        Route::put('/update/{id}', [ProductServicesController::class, 'update'])->name('productsServices.update');
         Route::get('/destroy/{id}', [ProductServicesController::class, 'destroy'])->name('productsServices.destroy');
     });
     Route::prefix('double-entry/Chart-Of-Accounts')->group(function () {
@@ -203,5 +208,13 @@ Route::middleware([
         Route::post('/update', [ChartOfAccountsController::class, 'update'])->name('chartofaccounts.update');
         Route::get('/destroy/{id}', [ChartOfAccountsController::class, 'destroy'])->name('chartofaccounts.destroy');
         Route::post('/fetch', [ChartOfAccountsController::class, 'fetchChartOfAccounts'])->name('chartofaccounts.fetch');
+    });
+
+    Route::prefix('settings/subcategory')->group(function () {
+        Route::get('/index', [SubCategoryController::class, 'index'])->name('subcategory.index');
+        Route::post('/store', [SubCategoryController::class, 'store'])->name('subcategory.store');
+        Route::post('/update', [SubCategoryController::class, 'update'])->name('subcategory.update');
+        Route::get('/destroy/{id}', [SubCategoryController::class, 'destroy'])->name('subcategory.destroy');
+        Route::post('/fetch', [SubCategoryController::class, 'fetchsubcategory'])->name('subcategory.fetch');
     });
 });

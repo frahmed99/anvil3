@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ChartOfAccounts extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'chart_of_accounts_subtypes_id',
@@ -16,7 +17,12 @@ class ChartOfAccounts extends Model
         'created_by'
     ];
 
-    public function chart_of_accounts_subtype()
+    public function productServices()
+    {
+        return $this->belongsToMany(Product_Services::class);
+    }
+
+    public function chartOfAccountsSubtype()
     {
         return $this->belongsTo(ChartOfAccountsSubtype::class, 'chart_of_accounts_subtypes_id');
     }

@@ -12,6 +12,8 @@
 <script src="{{ asset('js/plugins/datatables-buttons-pdfmake/vfs_fonts.js') }}"></script>
 <script src="{{ asset('js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
 <script src="{{ asset('js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+@vite(['resources/js/pages/daterange.js'])
 @vite(['resources/js/pages/datatables.js'])
 
 <script>
@@ -47,6 +49,64 @@
                 let toAmount = (fromAmount * rate).toFixed(2);
                 $('#toAmount').val(toAmount);
             }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#myTable').DataTable({
+            initComplete: function() {
+                this.api().columns().every(function() {
+                    var column = this;
+                    var input = document.createElement("input");
+                    $(input).appendTo($(column.footer()).empty())
+                        .on('change', function() {
+                            column.search($(this).val(), false, false, true).draw();
+                        });
+                });
+            }
+        });
+
+        $.fn.dataTable.ext.search.push(
+            function(settings, data, dataIndex) {
+                var min = $('#min-date').datepicker("getDate");
+                var max = $('#max-date').datepicker("getDate");
+                var startDate = new Date(data[2]);
+                if (min == null && max == null) {
+                    return true;
+                }
+                if (min == null && startDate <= max) {
+                    return true;
+                }
+                if (max == null && startDate >= min) {
+                    return true;
+                }
+                if (startDate <= max && startDate >= min) {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        $("#min-date").datepicker({
+            onSelect: function() {
+                table.draw();
+            },
+            changeMonth: true,
+            changeYear: true
+        });
+        $("#max-date").datepicker({
+            onSelect: function() {
+                table.draw();
+            },
+            changeMonth: true,
+            changeYear: true
+        });
+        var table = $('#myTable').DataTable();
+
+        $('#min-date, #max-date').change(function() {
+            table.draw();
         });
     });
 </script>

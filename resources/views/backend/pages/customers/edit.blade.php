@@ -19,7 +19,7 @@
         <div class="block block-themed block-rounded">
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
-                    <span>{{ __('Add Customer') }}</span>
+                    <span>{{ __('Edit Customer') }}</span>
                 </h2>
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">

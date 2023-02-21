@@ -277,7 +277,7 @@
                         </div>
                     </div>
                     <div class="block-content">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-sm table-vcenter table-borderless table-striped">
                             <thead>
                                 <tr>
                                     <th style="width: 100px;">ID</th>
@@ -447,7 +447,7 @@
                         </div>
                     </div>
                     <div class="block-content">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-sm table-vcenter table-borderless table-striped">
                             <thead>
                                 <tr>
                                     <th class="d-none d-sm-table-cell" style="width: 100px;">ID</th>

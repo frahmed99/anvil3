@@ -23,7 +23,15 @@
                     </a>
                 </h2>
                 <div class="block-content block-content-full">
-                    <table class="table table-borderless table-striped table-vcenter js-dataTable-buttons">
+                    <table
+                        class="table table-sm table-vcenter table-borderless table-striped table-vcenter js-dataTable-buttons"
+                        id="myTable">
+                        <div class="col-xl-7 mb-4">
+                            <input type="text"
+                                class="js-flatpickr form-control js-flatpickr-enabled flatpickr-input active"
+                                id="example-flatpickr-range" name="example-flatpickr-range" placeholder="Select Date Range"
+                                data-mode="range" data-min-date="today" readonly="readonly">
+                        </div>
                         <thead>
                             <tr>
                                 <th>Date</th>

@@ -17,40 +17,72 @@
         <div class="block block-themed block-rounded">
             <div class="block-content">
                 <h2 class="content-heading d-flex justify-content-between align-items-center">
-                    <span>Accounts</span>
+                    <span>Products And Services</span>
                     <a href="{{ route('productsServices.create') }}" type="button" class="btn btn-sm btn-alt-primary">
-                        <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Add Account') }}
+                        <i class="fa fa-plus opacity-50 me-1"></i> {{ __('Add Product/Service') }}
                     </a>
                 </h2>
                 <div class="block-content block-content-full">
-                    <table class="table table-sm table-borderless table-striped table-vcenter js-dataTable-buttons">
+                    <table class="table table-borderless table-striped table-vcenter table-sm">
                         <thead>
                             <tr>
-                                <th class="fw-bold text-center">Name</th>
-                                <th class="fw-bold text-center">SKU</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center">Sale Price</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center">Purchase Price</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center">Tax</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center">Category</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center">Unit</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center">Quantity</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center">Type</th>
-                                <th class="fw-bold d-none d-sm-table-cell text-center" style="width: 15%;">Actions</th>
+                                <th class="text-center fw-bold">Name</th>
+                                <th class="text-center fw-bold">SKU</th>
+                                <th class="text-center fw-bold">Sale Price</th>
+                                <th class="text-center fw-bold">Purchase Price</th>
+                                <th class="text-center fw-bold">Tax</th>
+                                <th class="text-center fw-bold">Category</th>
+                                <th class="text-center fw-bold">SubCategory</th>
+                                <th class="text-center fw-bold">Quantity</th>
+                                <th class="text-center fw-bold" style="width: 5%;">Type</th>
+                                <th class="text-center fw-bold" style="width: 10%;">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $product)
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->sku }}</td>
-                                <td>{{ $product->sale_price }}</td>
-                                <td>{{ $product->purchase_price }}</td>
-                                <td>{{ $product->quantity }}</td>
-                                <td>{{ $product->description }}</td>
-                                <td>{{ $product->created_by }}</td>
-                                <td>{{ $product->type }}</td>
-                                <td>{{ $product->tax->name }}</td>
-                                <td>{{ $product->category->name }}</td>
-                                <td>{{ $product->unit->name }}</td>
+                                <tr>
+                                    <td class="fw-semibold">{{ $product->name }}</td>
+                                    <td class="text-center">{{ $product->sku }}</td>
+                                    <td class="text-center">{{ $defaultCurrency }}
+                                        {{ number_format($product->purchasePrice, 2) }}</td>
+                                    <td class="text-center">{{ $defaultCurrency }}
+                                        {{ number_format($product->salePrice, 2) }}</td>
+                                    <td class="text-center">
+                                        @foreach ($product->taxes as $tax)
+                                            {{ $tax->name }}
+                                            @if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td class="text-center">{{ $product->category ? $product->category->name : '-' }}</td>
+                                    <td class="text-center">{{ $product->subCategory ? $product->subCategory->name : '-' }}
+                                    </td>
+                                    <td class="text-center">{{ $product->quantity }}</td>
+                                    <td class="text-center">
+                                        @if ($product->type == 'Product')
+                                            <span class="badge bg-success">{{ $product->type }}</span>
+                                        @else
+                                            <span class="badge bg-primary">{{ $product->type }}</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <a type="button" id="edit"
+                                                class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Bank"
+                                                href="{{ route('productsServices.edit', $product->id) }}">
+                                                <i class="fa fa-fw fa-edit"></i>
+                                            </a>
+                                            <a type="button" id="delete"
+                                                class="btn btn-sm btn-alt-danger me-1 js-bs-tooltip-enabled"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete Bank"
+                                                href="{{ route('productsServices.destroy', $product->id) }}">
+                                                <i class="fa fa-fw fa-xmark"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

@@ -15,7 +15,7 @@ class TransferController extends Controller
 {
     public function index()
     {
-        $transfers = Transfer::with(['fromAccount', 'toAccount'])->get();
+        $transfers = Transfer::orderBy('date', 'DESC')->with(['fromAccount', 'toAccount'])->get();
         return view('backend.pages.transfers.index', compact('transfers'));
     }
 

@@ -38,7 +38,7 @@
                                 <div class="block-options">
                                 </div>
                             </div>
-                            <table class="table table-bordered table-vcenter">
+                            <table class="table table-sm table-vcenter table-bordered table-vcenter">
                                 <thead>
                                     <tr>
                                         <th style="width: 250px">

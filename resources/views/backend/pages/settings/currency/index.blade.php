@@ -25,7 +25,7 @@
         </div>
         @include('backend.pages.settings.currency.partials.addModal')
         <div class="block-content">
-            <table class="table table-bordered table-striped table-vcenter">
+            <table class="table table-sm table-vcenter table-bordered table-striped table-vcenter">
                 <thead>
                     <tr>
                         <th class="text-center">Currency Name</th>

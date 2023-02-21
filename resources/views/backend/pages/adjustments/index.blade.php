@@ -24,7 +24,8 @@
                     </a>
                 </h2>
                 <div class="block-content block-content-full">
-                    <table class="table table-borderless table-striped table-vcenter js-dataTable-buttons">
+                    <table
+                        class="table table-sm table-vcenter table-borderless table-striped table-vcenter js-dataTable-buttons">
                         <thead>
                             <tr>
                                 <th class="fw-bold text-center">Date</th>
@@ -42,7 +43,7 @@
                                     </td>
                                     <td class="text-center fw-semibold">{{ $adjustment->adjustmentId }}</td>
                                     <td class="text-center fw-semibold">
-                                        {{ $banks->where('id', $adjustment->bank_id)->first()->bankName }}</td>
+                                        {{ $banks->where('id', $adjustment->bank_id)->first()->accountName }}</td>
                                     <td class="text-center">
                                         <span
                                             class="badge
