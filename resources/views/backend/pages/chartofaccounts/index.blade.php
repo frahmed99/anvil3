@@ -26,6 +26,8 @@
             </div>
         </div>
         @include('backend.pages.chartofaccounts.partials.addModal')
+        @include('backend.pages.chartofaccounts.partials.editModal')
+
         <div class="col-lg-12">
             <!-- Block Tabs Alternative Style -->
             <div class="block block-rounded overflow-hidden">
@@ -44,12 +46,20 @@
                             <table class="js-table-sections table table-hover" id="tab{{ $type->id }}">
                                 @foreach ($subtypes as $subtype)
                                     @if ($subtype->chart_of_accounts_types_id == $type->id)
+                                        @php
+                                            $subtypeAccounts = $accounts->where('chart_of_accounts_subtypes_id', $subtype->id);
+                                            $accountCount = $subtypeAccounts->count();
+                                        @endphp
                                         <tbody class="js-table-sections-header">
                                             <tr>
                                                 <td class="text-center">
                                                     <i class="fa fa-angle-right"></i>
                                                 </td>
-                                                <td class="fw-bold text-primary">{{ $subtype->name }}</td>
+                                                <td class="fw-bold text-primary">{{ $subtype->name }}
+                                                    @if ($accountCount > 0)
+                                                        <span class="badge bg-default">{{ $accountCount }}</span>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     {{ $subtype->description }}
                                                 </td>

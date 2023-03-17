@@ -12,6 +12,7 @@ use App\Http\Controllers\TransferController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\User\UserController;
+use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Http\Controllers\AdjustmentController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\SubCategoryController;
@@ -188,7 +189,9 @@ Route::middleware([
         Route::get('/edit/{id}', [QuotationController::class, 'edit'])->name('quotation.edit');
         Route::post('/update/{id}', [QuotationController::class, 'update'])->name('quotation.update');
         Route::get('/destroy/{id}', [QuotationController::class, 'destroy'])->name('quotation.destroy');
+        Route::post('/product/getdetails', [QuotationController::class, 'getProductDetails'])->name('product.getdetails');
     });
+
 
     Route::prefix('productsServices')->group(function () {
         Route::get('/index', [ProductServicesController::class, 'index'])->name('productsServices.index');
@@ -215,6 +218,6 @@ Route::middleware([
         Route::post('/store', [SubCategoryController::class, 'store'])->name('subcategory.store');
         Route::post('/update', [SubCategoryController::class, 'update'])->name('subcategory.update');
         Route::get('/destroy/{id}', [SubCategoryController::class, 'destroy'])->name('subcategory.destroy');
-        Route::post('/fetch', [SubCategoryController::class, 'fetchsubcategory'])->name('subcategory.fetch');
+        Route::post('/fetch', [SubCategoryController::class, 'fetchSubCategory'])->name('subcategory.fetch');
     });
 });

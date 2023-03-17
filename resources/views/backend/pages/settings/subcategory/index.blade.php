@@ -5,7 +5,7 @@
 @endsection
 
 @section('js')
-    @include('backend.pages.settings.category.partials.scripts')
+    @include('backend.pages.settings.subcategory.partials.scripts')
 @stop
 
 @section('subcontent')
@@ -17,7 +17,7 @@
                 <h3 class="block-title">{{ __('SUBCATEGORY') }}</h3>
                 <div class="block-options">
                     <button href="" type="button" class="btn btn-sm btn-alt-primary" data-bs-toggle="modal"
-                        data-bs-target="#addModal">
+                        data-bs-target="#addModal" data-animation-class="bounceIn">
                         <i class="fa fa-plus opacity-50 me-1"></i>{{ __('Add A Subcategory') }}
                     </button>
                 </div>
@@ -35,11 +35,14 @@
                         <tbody>
                             <tr>
                                 <td class="fw-semibold">{{ $subcategory->name }}</td>
-                                <td></td>
+                                <td>{{ $subcategory->category->name }}</td>
                                 <td class="text-center">
-                                    <button type="button" class=" btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled"
-                                        href="" data-bs-toggle="modal" data-bs-target="#editModal">
-                                        <i class="fa fa-fw fa-edit"></i></button>
+                                    <a type="button" href="javascript:void(0)"
+                                        onclick="fetchSubCategory('{{ $subcategory->id }}')"
+                                        class=" btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit SubCategory">
+                                        <i class="fa fa-fw fa-edit"></i>
+                                    </a>
                                     <button type="button" class="btn btn-sm btn-alt-danger me-1 js-bs-tooltip-enabled"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom">
                                         <i class="fa fa-fw fa-times"></i>

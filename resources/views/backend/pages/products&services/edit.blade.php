@@ -27,8 +27,7 @@
                         </h3>
                     </div>
                     <div class="block-content">
-                        <form action="{{ route('productsServices.update', $product->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('productsServices.update', $product->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row items-push">
@@ -94,7 +93,7 @@
                                             </span>
                                         </div>
                                         <div class="form-floating col-3 mb-4">
-                                            <select class="form-select" id="example-select-floating" name="unit_id"
+                                            <select class="form-select" id="unit_id" name="unit_id"
                                                 aria-label="Floating label select example">
                                                 <option selected value="">Select an unit</option>
                                                 @foreach ($units as $unit)
@@ -104,7 +103,7 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            <label class="form-label" for="example-select-floating">Unit</label>
+                                            <label class="form-label" for="unit_id">Unit</label>
                                         </div>
                                     </div>
                                     <div class="form-group row">

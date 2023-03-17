@@ -89,20 +89,17 @@
                 </a>
             </div>
         </div>
-        <h2 class="content-heading">Addresses</h2>
+        <h2 class="content-heading">Details</h2>
         <div class="row">
             <!-- Customer Information -->
             <div class="col-md-4">
-                <div class="block block-rounded">
+                <div class="block block-themed block-rounded">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Customer Information</h3>
                     </div>
                     <div class="block-content">
                         <div class="fs-lg mb-1">{{ $customer->name }}</div>
                         <address>
-                            <br>
-                            <br>
-                            <br><br>
                             <i class="fa fa-phone me-1"></i>{{ $customer->contact }}<br>
                             <i class="far fa-envelope me-1"></i> <a href="javascript:void(0)">{{ $customer->email }}</a>
                         </address>
@@ -112,7 +109,7 @@
             <!-- END Billing Address -->
             <!-- Billing Address -->
             <div class="col-md-4">
-                <div class="block block-rounded">
+                <div class="block block-themed block-rounded">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Billing Address</h3>
                     </div>
@@ -120,8 +117,6 @@
                         <div class="fs-lg mb-1">{{ $customer->company }}</div>
                         <address>
                             {{ $customer->billingAddress }}
-                            <br>
-                            <i class="fa fa-phone me-1"></i> Gaines Wolfe Co<br>
                         </address>
                     </div>
                 </div>
@@ -130,7 +125,7 @@
 
             <!-- Shipping Address -->
             <div class="col-md-4">
-                <div class="block block-rounded">
+                <div class="block block-themed block-rounded">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Shipping Address</h3>
                     </div>
@@ -138,8 +133,6 @@
                         <div class="fs-lg mb-1">{{ $customer->company }}</div>
                         <address>
                             {{ $customer->shippingAddress }}
-                            <br>
-                            <i class="fa fa-phone me-1"></i> Cline and Ortiz Trading<br>
                         </address>
                     </div>
                 </div>
@@ -148,7 +141,7 @@
         </div>
         <!-- Settings -->
         <h2 class="content-heading">Accounts</h2>
-        <div class="block block-rounded">
+        <div class="block block-themed block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
                     <i class="fa fa-pencil-alt fa-fw me-1 text-muted"></i> Quotations
@@ -183,8 +176,7 @@
                                                 class="fa fas fa-exchange-alt"></i></a>
                                         <a type="button" class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled show"
                                             href="" data-bs-placement="bottom"><i class="fa fas fa-copy"></i></a>
-                                        <a type="button"
-                                            class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled show"
+                                        <a type="button" class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled show"
                                             href="" data-bs-placement="bottom"><i class="fa fa-fw fa-eye"></i></a>
                                         <a type="button" id="edit"
                                             class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled"
@@ -203,7 +195,7 @@
                 </div>
             </div>
         </div>
-        <div class="block block-rounded">
+        <div class="block block-themed block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
                     <i class="fa fa-pencil-alt fa-fw me-1 text-muted"></i> Invoices

@@ -16,48 +16,21 @@
     });
 </script>
 
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $(".btn-submit").click(function(e) {
-        e.preventDefault();
-
-        var name = $("#addChartOfAccounts #name").val();
-        var code = $("#addChartOfAccounts #code").val();
-        var chart_of_accounts_subtypes_id = $("#addChartOfAccounts #chart_of_accounts_subtypes_id").val();
-        var description = $("#addChartOfAccounts #description").val();
-
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('chartofaccounts.store') }}",
-            data: {
-                name: name,
-                code: code,
-                chart_of_accounts_subtypes_id: chart_of_accounts_subtypes_id,
-                description: description
-            },
-            success: function(data) {
-                if ($.isEmptyObject(data.error)) {
-                    location.reload();
-                } else {
-                    printErrorMsg(data.error);
-                }
-            }
+@if ((count($errors) > 0 && $errors->has('chart_of_accounts_subtypes_id')) || $errors->has('chartOfAccountsName'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#addChartOfAccounts').modal('show');
         });
-    });
+    </script>
+@endif
 
-    function printErrorMsg(msg) {
-        $.each(msg, function(key, value) {
-            var element = $("#addChartOfAccounts #" + key);
-            element.siblings(".invalid-feedback").html(value);
-            element.addClass("is-invalid");
-        });
-    }
+<script>
+    $('#addChartOfAccounts').on('hidden.bs.modal', function() {
+        $('#chartOfAccountsForm').find('.is-invalid').removeClass('is-invalid');
+        $('#chartOfAccountsForm')[0].reset();
+    });
 </script>
+
 
 
 <script>
@@ -85,83 +58,48 @@
 </script>
 
 <script>
-    var originalValues = {};
-
-    // Store original values when the form is loaded
-    $(document).ready(function() {
-        $("#formEditChartOfAccounts input").each(function() {
-            originalValues[$(this).attr("name")] = $(this).val();
-        });
+    $('#editModalChartOfAccounts').on('hidden.bs.modal', function() {
+        $('#editChartOfAccountsForm').find('.is-invalid').removeClass('is-invalid');
+        $('#editChartOfAccountsForm')[0].reset();
     });
+</script>
 
-    $("#formEditChartOfAccounts").submit(function(e) {
-        e.preventDefault();
-
-        var formData = new FormData($(this)[0]);
-        formData.append("name", $("#name").val());
-        formData.append("code", $("#code").val());
-        formData.append("description", $("#description").val());
-        formData.append("chart_of_accounts_subtypes_id", $("#chart_of_accounts_subtypes_id").val());
-
-        var updateRequired = false;
-
-        // Check if any changes have been made
-        $("#formEditChartOfAccounts input").each(function() {
-            if ($(this).val() != originalValues[$(this).attr("name")]) {
-                updateRequired = true;
-                return false;
-            }
-        });
-
-        if (!updateRequired) {
-            $("#editModalChartOfAccounts").modal("hide");
-            return;
-        }
-
+<script>
+    $('#editChartOfAccountsForm').submit(function(event) {
+        event.preventDefault();
         $.ajax({
             url: "{{ route('chartofaccounts.update') }}",
             method: "POST",
             dataType: "json",
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: formData,
-            success: function(response) {
-                $("#msgEditChartOfAccounts").html("");
-                if (response.status == 0)
-                    $("#msgEditChartOfAccounts").html(response.msg);
-                else {
-                    location.reload();
-                    $("#editModalChartOfAccounts").modal("hide");
-                }
-            },
+            data: $(this).serialize(),
             headers: {
                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
             },
-            error: function(error) {
-                console.log(error)
-                var response = JSON.parse(error.responseText);
-                var errorString = "<ul>";
-                $.each(response.errors, function(key, value) {
-                    errorString += "<li>" + value + "</li>";
-                });
-                errorString += "</ul>";
-                $("#msgEditChartOfAccounts").html(errorString);
-                $("#msgEditChartOfAccounts").removeClass("d-none").addClass(
-                    "p-3 rounded bg-danger");
+            success: function(response) {
+                // Handle success response
+                console.log(response);
+                // Close the modal
+                $('#editModalChartOfAccounts').modal('hide');
+                // Refresh the chart of accounts index page
+                window.location.reload();
+            },
+            error: function(response) {
+                // Handle error response
+                // Display validation errors
+                if (response.status === 422) {
+                    var errors = response.responseJSON.errors;
+                    $.each(errors, function(key, value) {
+                        var input = $('[name="' + key + '"]');
+                        var parentDiv = input.parent();
+                        // Append the error messages to a new div
+                        var errorDiv = $('<div>').addClass('invalid-feedback').text(value[
+                            0]);
+                        parentDiv.append(errorDiv);
+                        // Add the "is-invalid" class to the input field
+                        input.addClass('is-invalid');
+                    });
+                }
             }
         });
-    });
-</script>
-<script>
-    $('#editModalChartOfAccounts').on('hidden.bs.modal', function(e) {
-        $("#msgEditChartOfAccounts").html("");
-        $(this)
-            .find("input,textarea,select")
-            .val('')
-            .end()
-            .find("input[type=checkbox], input[type=radio]")
-            .prop("checked", "")
-            .end();
     });
 </script>

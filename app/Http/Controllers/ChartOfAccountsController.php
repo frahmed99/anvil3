@@ -24,17 +24,22 @@ class ChartOfAccountsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:chart_of_accounts',
-            'code' => 'nullable',
-            'chart_of_accounts_subtypes_id' => 'required',
-            'description' => 'nullable',
+            'chartOfAccountsName' => 'required|string|max:255|unique:chart_of_accounts,name',
+            'chartOfAccountsCode' => 'nullable|string|max:255',
+            'chart_of_accounts_subtypes_id' => 'required|numeric',
+            'chartOfAccountsDescription' => 'nullable',
+        ], [
+            'chartOfAccountsName.required' => 'Name cannot be blank',
+            'chartOfAccountsName.unique' => 'Chart Of Account Already Taken',
+            'chartOfAccountsName.max' => 'Name is too long',
+            'chart_of_accounts_subtypes_id.numeric' => 'Please select a Category '
         ]);
 
         ChartOfAccounts::create([
-            'name' => $request->name,
-            'code' => $request->code,
+            'name' => $request->chartOfAccountsName,
+            'code' => $request->chartOfAccountsCode,
             'chart_of_accounts_subtypes_id' => $request->chart_of_accounts_subtypes_id,
-            'description' => $request->description,
+            'description' => $request->chartOfAccountsDescription,
         ]);
 
         smilify('success', 'Chart of Account Created Successfully');
@@ -79,6 +84,6 @@ class ChartOfAccountsController extends Controller
         $arr["description"] = $request->editDescription;
         $upd = DB::table("chart_of_accounts")->where("id", $request->idChartOfAccounts)->update($arr);
         smilify('success', ' Account Updated');
-        echo json_encode(['status' => $upd ? 1 : 0]);
+        return response()->json(['status' => $upd ? 1 : 0]);
     }
 }
